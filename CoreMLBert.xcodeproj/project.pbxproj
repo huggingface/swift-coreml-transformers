@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7944CDBF22C501D6000C0B1E /* dev-v1.1.json in Resources */ = {isa = PBXBuildFile; fileRef = 7944CDBE22C501D6000C0B1E /* dev-v1.1.json */; };
+		7944CDC022C501D6000C0B1E /* dev-v1.1.json in Resources */ = {isa = PBXBuildFile; fileRef = 7944CDBE22C501D6000C0B1E /* dev-v1.1.json */; };
 		79F2CC5C22C50078009F8551 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC5B22C50078009F8551 /* AppDelegate.swift */; };
 		79F2CC5E22C50078009F8551 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC5D22C50078009F8551 /* SceneDelegate.swift */; };
 		79F2CC6022C50078009F8551 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC5F22C50078009F8551 /* ViewController.swift */; };
@@ -14,6 +16,12 @@
 		79F2CC6522C5007B009F8551 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79F2CC6422C5007B009F8551 /* Assets.xcassets */; };
 		79F2CC6822C5007B009F8551 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79F2CC6622C5007B009F8551 /* LaunchScreen.storyboard */; };
 		79F2CC7322C5007B009F8551 /* CoreMLBertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC7222C5007B009F8551 /* CoreMLBertTests.swift */; };
+		79F2CC8122C5041C009F8551 /* SquadDataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC8022C5041C009F8551 /* SquadDataset.swift */; };
+		79F2CC8322C50E00009F8551 /* BertTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC8222C50E00009F8551 /* BertTokenizer.swift */; };
+		79F2CC8522C50F87009F8551 /* vocab.txt in Resources */ = {isa = PBXBuildFile; fileRef = 79F2CC8422C50F87009F8551 /* vocab.txt */; };
+		79F2CC8622C50F87009F8551 /* vocab.txt in Resources */ = {isa = PBXBuildFile; fileRef = 79F2CC8422C50F87009F8551 /* vocab.txt */; };
+		79F2CC8822C51E03009F8551 /* basic_tokenized_questions.json in Resources */ = {isa = PBXBuildFile; fileRef = 79F2CC8722C51E03009F8551 /* basic_tokenized_questions.json */; };
+		79F2CC8922C51E03009F8551 /* basic_tokenized_questions.json in Resources */ = {isa = PBXBuildFile; fileRef = 79F2CC8722C51E03009F8551 /* basic_tokenized_questions.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7944CDBE22C501D6000C0B1E /* dev-v1.1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "dev-v1.1.json"; sourceTree = "<group>"; };
 		79F2CC5822C50078009F8551 /* CoreMLBert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreMLBert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79F2CC5B22C50078009F8551 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79F2CC5D22C50078009F8551 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +47,10 @@
 		79F2CC6E22C5007B009F8551 /* CoreMLBertTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreMLBertTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		79F2CC7222C5007B009F8551 /* CoreMLBertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLBertTests.swift; sourceTree = "<group>"; };
 		79F2CC7422C5007B009F8551 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		79F2CC8022C5041C009F8551 /* SquadDataset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadDataset.swift; sourceTree = "<group>"; };
+		79F2CC8222C50E00009F8551 /* BertTokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BertTokenizer.swift; sourceTree = "<group>"; };
+		79F2CC8422C50F87009F8551 /* vocab.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vocab.txt; sourceTree = "<group>"; };
+		79F2CC8722C51E03009F8551 /* basic_tokenized_questions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = basic_tokenized_questions.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,9 +71,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7944CDBD22C501AF000C0B1E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7944CDBE22C501D6000C0B1E /* dev-v1.1.json */,
+				79F2CC8422C50F87009F8551 /* vocab.txt */,
+				79F2CC8722C51E03009F8551 /* basic_tokenized_questions.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		79F2CC4F22C50078009F8551 = {
 			isa = PBXGroup;
 			children = (
+				7944CDBD22C501AF000C0B1E /* Resources */,
+				79F2CC7F22C50410009F8551 /* Sources */,
 				79F2CC5A22C50078009F8551 /* CoreMLBert */,
 				79F2CC7122C5007B009F8551 /* CoreMLBertTests */,
 				79F2CC5922C50078009F8551 /* Products */,
@@ -97,6 +122,15 @@
 				79F2CC7422C5007B009F8551 /* Info.plist */,
 			);
 			path = CoreMLBertTests;
+			sourceTree = "<group>";
+		};
+		79F2CC7F22C50410009F8551 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				79F2CC8022C5041C009F8551 /* SquadDataset.swift */,
+				79F2CC8222C50E00009F8551 /* BertTokenizer.swift */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,9 +214,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79F2CC8522C50F87009F8551 /* vocab.txt in Resources */,
 				79F2CC6822C5007B009F8551 /* LaunchScreen.storyboard in Resources */,
+				79F2CC8822C51E03009F8551 /* basic_tokenized_questions.json in Resources */,
 				79F2CC6522C5007B009F8551 /* Assets.xcassets in Resources */,
 				79F2CC6322C50078009F8551 /* Main.storyboard in Resources */,
+				7944CDBF22C501D6000C0B1E /* dev-v1.1.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +227,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79F2CC8622C50F87009F8551 /* vocab.txt in Resources */,
+				7944CDC022C501D6000C0B1E /* dev-v1.1.json in Resources */,
+				79F2CC8922C51E03009F8551 /* basic_tokenized_questions.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +241,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				79F2CC6022C50078009F8551 /* ViewController.swift in Sources */,
+				79F2CC8122C5041C009F8551 /* SquadDataset.swift in Sources */,
 				79F2CC5C22C50078009F8551 /* AppDelegate.swift in Sources */,
+				79F2CC8322C50E00009F8551 /* BertTokenizer.swift in Sources */,
 				79F2CC5E22C50078009F8551 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

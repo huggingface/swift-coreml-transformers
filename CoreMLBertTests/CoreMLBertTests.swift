@@ -9,6 +9,8 @@
 import XCTest
 @testable import CoreMLBert
 
+
+
 class CoreMLBertTests: XCTestCase {
 
     override func setUp() {
@@ -19,11 +21,36 @@ class CoreMLBertTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testBasicTokenizer() {
+        let basicTokenizer = BasicTokenizer()
+        
+        let text = "Brave gaillard, d'où [UNK] êtes vous?"
+        let tokens = ["brave", "gaillard", ",", "d", "\'", "ou", "[UNK]", "etes", "vous", "?"]
+        
+        XCTAssertEqual(
+            basicTokenizer.tokenize(text: text), tokens
+        )
+        /// Verify that `XCTAssertEqual` does what deep equality checks on arrays of strings.
+        XCTAssertEqual(["foo", "bar"], ["foo", "bar"])
     }
-
+    
+    /// For each Squad question tokenized by python, check that we get the same output.
+    func testFullBasicTokenizer() {
+        let url = Bundle.main.url(forResource: "basic_tokenized_questions", withExtension: "json")!
+        let json = try! Data(contentsOf: url)
+        let decoder = JSONDecoder()
+        let sampleTokens = try! decoder.decode([[String]].self, from: json)
+        
+        let basicTokenizer = BasicTokenizer()
+        
+        XCTAssertEqual(sampleTokens.count, Squad.examples.count)
+        
+        for (i, example) in Squad.examples.enumerated() {
+            let output = basicTokenizer.tokenize(text: example.question)
+            XCTAssertEqual(output, sampleTokens[i])
+        }
+    }
+    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {

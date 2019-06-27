@@ -12,9 +12,11 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        print("===")
+        let tokenizer = BertTokenizer()
+        print(
+            tokenizer.tokenize(text: "Brave gaillard, d'où [UNK] êtes vous?")
+        )
     }
-
-
 }
 
