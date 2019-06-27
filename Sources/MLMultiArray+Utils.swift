@@ -18,6 +18,16 @@ extension MLMultiArray {
         }
         return o
     }
+    
+    /// This will concatenate all dimenions into one one-dim array.
+    static func toIntArray(_ o: MLMultiArray) -> [Int] {
+        var arr = Array(repeating: 0, count: o.count)
+        let ptr = UnsafeMutablePointer<Int32>(OpaquePointer(o.dataPointer))
+        for i in 0..<o.count {
+            arr[i] = Int(ptr[i])
+        }
+        return arr
+    }
 }
 
 

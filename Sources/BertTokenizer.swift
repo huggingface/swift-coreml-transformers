@@ -46,7 +46,7 @@ class BertTokenizer {
         return tokens
     }
     
-    func convertTokensToIds(tokens: [String]) throws -> [Int] {
+    private func convertTokensToIds(tokens: [String]) throws -> [Int] {
         if tokens.count > maxLen {
             throw TokenizerError.tooLong(
                 """
@@ -57,6 +57,15 @@ class BertTokenizer {
             )
         }
         return tokens.map { vocab[$0]! }
+    }
+    
+    /// Main entry point
+    func tokenizeToIds(text: String) -> [Int] {
+        return try! convertTokensToIds(tokens: tokenize(text: text))
+    }
+    
+    func tokenToId(token: String) -> Int {
+        return vocab[token]!
     }
 }
 

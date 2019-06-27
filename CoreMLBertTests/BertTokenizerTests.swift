@@ -1,5 +1,5 @@
 //
-//  CoreMLBertTests.swift
+//  BertTokenizerTests.swift
 //  CoreMLBertTests
 //
 //  Created by Julien Chaumond on 27/06/2019.
@@ -11,7 +11,7 @@ import XCTest
 
 
 
-class CoreMLBertTests: XCTestCase {
+class BertTokenizerTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -58,20 +58,23 @@ class CoreMLBertTests: XCTestCase {
         let decoder = JSONDecoder()
         let sampleTokens = try! decoder.decode([[Int]].self, from: json)
         
-        let bertTokenizer = BertTokenizer()
+        let tokenizer = BertTokenizer()
         
         XCTAssertEqual(sampleTokens.count, Squad.examples.count)
         
         for (i, example) in Squad.examples.enumerated() {
-            let output = try! bertTokenizer.convertTokensToIds(tokens: bertTokenizer.tokenize(text: example.question))
+            let output = tokenizer.tokenizeToIds(text: example.question)
             XCTAssertEqual(output, sampleTokens[i])
         }
     }
     
     func testPerformanceExample() {
+        let tokenizer = BertTokenizer()
+        
         // This is an example of a performance test case.
         self.measure {
             // Put the code you want to measure the time of here.
+            _ = tokenizer.tokenizeToIds(text: "Brave gaillard, d'où [UNK] êtes vous?")
         }
     }
 
