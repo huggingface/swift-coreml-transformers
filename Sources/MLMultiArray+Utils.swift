@@ -10,11 +10,11 @@ import Foundation
 import CoreML
 
 extension MLMultiArray {
-    static func from(arr: [Int]) -> MLMultiArray {
+    static func from(_ arr: [Int]) -> MLMultiArray {
         let o = try! MLMultiArray(shape: [1, arr.count] as [NSNumber], dataType: .int32)
-        let ptr = UnsafeMutablePointer<Int>(OpaquePointer(o.dataPointer))
+        let ptr = UnsafeMutablePointer<Int32>(OpaquePointer(o.dataPointer))
         for (i, item) in arr.enumerated() {
-            ptr[i] = item
+            ptr[i] = Int32(item)
         }
         return o
     }
