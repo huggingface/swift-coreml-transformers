@@ -34,7 +34,7 @@ class CoreMLBertTests: XCTestCase {
         XCTAssertEqual(["foo", "bar"], ["foo", "bar"])
     }
     
-    /// For each Squad question tokenized by python, check that we get the same output.
+    /// For each Squad question tokenized by python, check that we get the same output through the `BasicTokenizer`
     func testFullBasicTokenizer() {
         let url = Bundle.main.url(forResource: "basic_tokenized_questions", withExtension: "json")!
         let json = try! Data(contentsOf: url)
@@ -47,6 +47,23 @@ class CoreMLBertTests: XCTestCase {
         
         for (i, example) in Squad.examples.enumerated() {
             let output = basicTokenizer.tokenize(text: example.question)
+            XCTAssertEqual(output, sampleTokens[i])
+        }
+    }
+    
+    /// For each Squad question tokenized by python, check that we get the same output through the whole `BertTokenizer`
+    func testFullBertTokenizer() {
+        let url = Bundle.main.url(forResource: "tokenized_questions", withExtension: "json")!
+        let json = try! Data(contentsOf: url)
+        let decoder = JSONDecoder()
+        let sampleTokens = try! decoder.decode([[Int]].self, from: json)
+        
+        let bertTokenizer = BertTokenizer()
+        
+        XCTAssertEqual(sampleTokens.count, Squad.examples.count)
+        
+        for (i, example) in Squad.examples.enumerated() {
+            let output = try! bertTokenizer.convertTokensToIds(tokens: bertTokenizer.tokenize(text: example.question))
             XCTAssertEqual(output, sampleTokens[i])
         }
     }

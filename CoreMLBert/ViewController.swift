@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         print("===")
         let tokenizer = BertTokenizer()
         print(
-            tokenizer.tokenize(text: "Brave gaillard, d'où [UNK] êtes vous?")
+            try! tokenizer.convertTokensToIds(tokens: tokenizer.tokenize(text: "My name is unaffable Jôhn."))
         )
     }
 }
