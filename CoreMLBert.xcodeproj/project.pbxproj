@@ -26,6 +26,8 @@
 		79F2CC8C22C549C1009F8551 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC8A22C549C1009F8551 /* Utils.swift */; };
 		79F2CC8E22C55413009F8551 /* tokenized_questions.json in Resources */ = {isa = PBXBuildFile; fileRef = 79F2CC8D22C55413009F8551 /* tokenized_questions.json */; };
 		79F2CC8F22C55413009F8551 /* tokenized_questions.json in Resources */ = {isa = PBXBuildFile; fileRef = 79F2CC8D22C55413009F8551 /* tokenized_questions.json */; };
+		79F2CC9122C5590C009F8551 /* BERTSQUADFP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC9022C5590C009F8551 /* BERTSQUADFP16.mlmodel */; };
+		79F2CC9222C5590C009F8551 /* BERTSQUADFP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC9022C5590C009F8551 /* BERTSQUADFP16.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,7 @@
 		79F2CC8722C51E03009F8551 /* basic_tokenized_questions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = basic_tokenized_questions.json; sourceTree = "<group>"; };
 		79F2CC8A22C549C1009F8551 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		79F2CC8D22C55413009F8551 /* tokenized_questions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tokenized_questions.json; sourceTree = "<group>"; };
+		79F2CC9022C5590C009F8551 /* BERTSQUADFP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = BERTSQUADFP16.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +87,7 @@
 				79F2CC8422C50F87009F8551 /* vocab.txt */,
 				79F2CC8722C51E03009F8551 /* basic_tokenized_questions.json */,
 				79F2CC8D22C55413009F8551 /* tokenized_questions.json */,
+				79F2CC9022C5590C009F8551 /* BERTSQUADFP16.mlmodel */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -253,6 +257,7 @@
 				79F2CC6022C50078009F8551 /* ViewController.swift in Sources */,
 				79F2CC8122C5041C009F8551 /* SquadDataset.swift in Sources */,
 				79F2CC5C22C50078009F8551 /* AppDelegate.swift in Sources */,
+				79F2CC9122C5590C009F8551 /* BERTSQUADFP16.mlmodel in Sources */,
 				79F2CC8322C50E00009F8551 /* BertTokenizer.swift in Sources */,
 				79F2CC5E22C50078009F8551 /* SceneDelegate.swift in Sources */,
 				79F2CC8B22C549C1009F8551 /* Utils.swift in Sources */,
@@ -265,6 +270,7 @@
 			files = (
 				79F2CC7322C5007B009F8551 /* CoreMLBertTests.swift in Sources */,
 				79F2CC8C22C549C1009F8551 /* Utils.swift in Sources */,
+				79F2CC9222C5590C009F8551 /* BERTSQUADFP16.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
