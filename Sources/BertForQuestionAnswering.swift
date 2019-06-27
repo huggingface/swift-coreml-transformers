@@ -15,6 +15,17 @@ class BertForQuestionAnswering {
     public let seqLen = 384
     
     
+    func predict(question: String, context: String) -> (Int, Int) {
+        let input = featurizeTokens(question: question, context: context)
+        
+        let output = try! model.prediction(input: input)
+        let startPos = Math.argmax(output.start_logits).0
+        let endPos = Math.argmax(output.end_logits).0
+        
+        return (startPos, endPos)
+    }
+    
+    
     func featurizeTokens(question: String, context: String) -> BERTSQUADFP16Input {
         let tokensQuestion = tokenizer.tokenizeToIds(text: question)
         var tokensContext = tokenizer.tokenizeToIds(text: context)
