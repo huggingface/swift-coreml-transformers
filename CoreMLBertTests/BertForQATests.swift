@@ -49,15 +49,18 @@ class BertForQATests: XCTestCase {
     }
     
     func testPredict() {
-        let positions = m.predict(question: question, context: context)
+        let prediction = m.predict(question: question, context: context)
         XCTAssertEqual(
-            positions.start, 46
+            prediction.start, 46
         )
         XCTAssertEqual(
-            positions.end, 47
+            prediction.end, 47
         )
         XCTAssertEqual(
-            positions.tokens, ["denver", "broncos"]
+            prediction.tokens, ["denver", "broncos"]
+        )
+        XCTAssertEqual(
+            prediction.answer, "denver broncos"
         )
     }
     

@@ -36,6 +36,7 @@
 		79F2CC9B22C57132009F8551 /* MLMultiArray+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC9922C57132009F8551 /* MLMultiArray+Utils.swift */; };
 		79F2CC9C22C57731009F8551 /* BertTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC8222C50E00009F8551 /* BertTokenizer.swift */; };
 		79F2CC9E22C57825009F8551 /* BertForQATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC9D22C57825009F8551 /* BertForQATests.swift */; };
+		79F2CCA022C666C7009F8551 /* question_tokens.json in Resources */ = {isa = PBXBuildFile; fileRef = 79F2CC9F22C666C7009F8551 /* question_tokens.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		79F2CC9622C56890009F8551 /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		79F2CC9922C57132009F8551 /* MLMultiArray+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MLMultiArray+Utils.swift"; sourceTree = "<group>"; };
 		79F2CC9D22C57825009F8551 /* BertForQATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BertForQATests.swift; sourceTree = "<group>"; };
+		79F2CC9F22C666C7009F8551 /* question_tokens.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = question_tokens.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				79F2CC8422C50F87009F8551 /* vocab.txt */,
 				79F2CC8722C51E03009F8551 /* basic_tokenized_questions.json */,
 				79F2CC8D22C55413009F8551 /* tokenized_questions.json */,
+				79F2CC9F22C666C7009F8551 /* question_tokens.json */,
 				79F2CC9022C5590C009F8551 /* BERTSQUADFP16.mlmodel */,
 			);
 			path = Resources;
@@ -249,6 +252,7 @@
 				79F2CC6522C5007B009F8551 /* Assets.xcassets in Resources */,
 				79F2CC6322C50078009F8551 /* Main.storyboard in Resources */,
 				7944CDBF22C501D6000C0B1E /* dev-v1.1.json in Resources */,
+				79F2CCA022C666C7009F8551 /* question_tokens.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

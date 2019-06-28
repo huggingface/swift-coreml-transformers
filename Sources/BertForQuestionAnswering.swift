@@ -19,7 +19,7 @@ class BertForQuestionAnswering {
     /// - featurization
     /// - model inference
     /// - argmax and re-tokenization
-    func predict(question: String, context: String) -> (start: Int, end: Int, tokens: [String]) {
+    func predict(question: String, context: String) -> (start: Int, end: Int, tokens: [String], answer: String) {
         let input = featurizeTokens(question: question, context: context)
         
         let output = try! model.prediction(input: input)
@@ -30,7 +30,8 @@ class BertForQuestionAnswering {
             MLMultiArray.toIntArray(input.word_id)[start...end]
         )
         let tokens = tokenizer.unTokenize(tokens: tokenIds)
-        return (start: start, end: end, tokens: tokens)
+        let answer = tokenizer.convertWordpieceToBasicTokenList(tokens)
+        return (start: start, end: end, tokens: tokens, answer: answer)
     }
     
     
