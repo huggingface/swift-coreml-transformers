@@ -37,6 +37,7 @@
 		79F2CC9C22C57731009F8551 /* BertTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC8222C50E00009F8551 /* BertTokenizer.swift */; };
 		79F2CC9E22C57825009F8551 /* BertForQATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC9D22C57825009F8551 /* BertForQATests.swift */; };
 		79F2CCA022C666C7009F8551 /* question_tokens.json in Resources */ = {isa = PBXBuildFile; fileRef = 79F2CC9F22C666C7009F8551 /* question_tokens.json */; };
+		79F2CCA222C6717E009F8551 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CCA122C6717D009F8551 /* LoaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		79F2CC9922C57132009F8551 /* MLMultiArray+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MLMultiArray+Utils.swift"; sourceTree = "<group>"; };
 		79F2CC9D22C57825009F8551 /* BertForQATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BertForQATests.swift; sourceTree = "<group>"; };
 		79F2CC9F22C666C7009F8551 /* question_tokens.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = question_tokens.json; sourceTree = "<group>"; };
+		79F2CCA122C6717D009F8551 /* LoaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				79F2CC6422C5007B009F8551 /* Assets.xcassets */,
 				79F2CC6622C5007B009F8551 /* LaunchScreen.storyboard */,
 				79F2CC6922C5007B009F8551 /* Info.plist */,
+				79F2CCA122C6717D009F8551 /* LoaderView.swift */,
 			);
 			path = CoreMLBert;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				79F2CC9A22C57132009F8551 /* MLMultiArray+Utils.swift in Sources */,
+				79F2CCA222C6717E009F8551 /* LoaderView.swift in Sources */,
 				79F2CC6022C50078009F8551 /* ViewController.swift in Sources */,
 				79F2CC8122C5041C009F8551 /* SquadDataset.swift in Sources */,
 				79F2CC9722C56891009F8551 /* Math.swift in Sources */,

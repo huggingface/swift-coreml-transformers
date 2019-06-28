@@ -9,16 +9,51 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var shuffleBtn: UIButton!
+    @IBOutlet weak var subjectField: UITextView!
+    @IBOutlet weak var questionField: UITextView!
+    @IBOutlet weak var answerBtn: UIButton!
+    @IBOutlet weak var answerLabel: UILabel!
+    let loaderView = LoaderView()
+    
+    let m = BertForQuestionAnswering()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let context = "Super Bowl 50 was an American football game to determine the champion of the National Football League (NFL) for the 2015 season. The American Football Conference (AFC) champion Denver Broncos defeated the National Football Conference (NFC) champion Carolina Panthers 24–10 to earn their third Super Bowl title. The game was played on February 7, 2016, at Levi's Stadium in the San Francisco Bay Area at Santa Clara, California. As this was the 50th Super Bowl, the league emphasized the \"golden anniversary\" with various gold-themed initiatives, as well as temporarily suspending the tradition of naming each Super Bowl game with Roman numerals (under which the game would have been known as \"Super Bowl L\"), so that the logo could prominently feature the Arabic numerals 50."
-        let question = "Which NFL team represented the AFC at Super Bowl 50?"
-        print("===")
-        let m = BertForQuestionAnswering()
-        // m.predict(question: question, context: context)
+        view.addSubview(loaderView)
+        loaderView.isLoading = true
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
+            self.loaderView.isLoading = false
+        }
         
+        shuffle()
+        shuffleBtn.addTarget(self, action: #selector(shuffle), for: .touchUpInside)
+        answerBtn.addTarget(self, action: #selector(answer), for: .touchUpInside)
+        
+        subjectField.flashScrollIndicators()
+        questionField.flashScrollIndicators()
+    }
+    
+    @objc func shuffle() {
+        answerLabel.text = ""
+        guard let example = Squad.examples.randomElement() else {
+            return
+        }
+        subjectField.text = example.context
+        questionField.text = example.question
+    }
+    
+    @objc func answer() {
+        loaderView.isLoading = true
+
+        let question = questionField.text ?? ""
+        let context = subjectField.text ?? ""
+        let prediction = m.predict(question: question, context: context)
+        print("🎉", prediction)
+        answerLabel.text = prediction.answer
+        
+        loaderView.isLoading = false
     }
 }
 
