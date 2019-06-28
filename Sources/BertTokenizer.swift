@@ -67,6 +67,11 @@ class BertTokenizer {
     func tokenToId(token: String) -> Int {
         return vocab[token]!
     }
+    
+    /// Un-tokenization: get tokens from tokenIds
+    func unTokenize(tokens: [Int]) -> [String] {
+        return tokens.map { ids_to_tokens[$0]! }
+    }
 }
 
 

@@ -48,15 +48,19 @@ class BertForQATests: XCTestCase {
         )
     }
     
-    func testInference() {
+    func testPredict() {
         let positions = m.predict(question: question, context: context)
         XCTAssertEqual(
-            positions.0, 46
+            positions.start, 46
         )
         XCTAssertEqual(
-            positions.1, 47
+            positions.end, 47
+        )
+        XCTAssertEqual(
+            positions.tokens, ["denver", "broncos"]
         )
     }
+    
     
     func testPerformanceExample() {
         // This is an example of a performance test case.

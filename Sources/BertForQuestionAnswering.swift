@@ -15,14 +15,22 @@ class BertForQuestionAnswering {
     public let seqLen = 384
     
     
-    func predict(question: String, context: String) -> (Int, Int) {
+    /// Main prediction loop:
+    /// - featurization
+    /// - model inference
+    /// - argmax and re-tokenization
+    func predict(question: String, context: String) -> (start: Int, end: Int, tokens: [String]) {
         let input = featurizeTokens(question: question, context: context)
         
         let output = try! model.prediction(input: input)
-        let startPos = Math.argmax(output.start_logits).0
-        let endPos = Math.argmax(output.end_logits).0
+        let start = Math.argmax(output.start_logits).0
+        let end = Math.argmax(output.end_logits).0
         
-        return (startPos, endPos)
+        let tokenIds = Array(
+            MLMultiArray.toIntArray(input.word_id)[start...end]
+        )
+        let tokens = tokenizer.unTokenize(tokens: tokenIds)
+        return (start: start, end: end, tokens: tokens)
     }
     
     
