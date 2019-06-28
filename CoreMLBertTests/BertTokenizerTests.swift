@@ -77,5 +77,23 @@ class BertTokenizerTests: XCTestCase {
             _ = tokenizer.tokenizeToIds(text: "Brave gaillard, d'où [UNK] êtes vous?")
         }
     }
-
+    
+    func testWordpieceDetokenizer() {
+        struct QuestionTokens: Codable {
+            let original: String
+            let basic: [String]
+            let wordpiece: [String]
+        }
+        
+        let url = Bundle.main.url(forResource: "question_tokens", withExtension: "json")!
+        let json = try! Data(contentsOf: url)
+        let decoder = JSONDecoder()
+        let questionTokens = try! decoder.decode([QuestionTokens].self, from: json)
+        
+        let tokenizer = BertTokenizer()
+        
+        for question in questionTokens {
+            XCTAssertEqual(question.basic.joined(separator: " "), tokenizer.convertWordpieceToBasicTokenList(question.wordpiece))
+        }
+    }
 }

@@ -72,6 +72,27 @@ class BertTokenizer {
     func unTokenize(tokens: [Int]) -> [String] {
         return tokens.map { ids_to_tokens[$0]! }
     }
+    
+    func convertWordpieceToBasicTokenList(_ wordpieceTokenList: [String]) -> String {
+        var tokenList: [String] = []
+        var individualToken: String = ""
+        
+        for token in wordpieceTokenList{
+            if(token.starts(with: "##")){
+                individualToken += (String(token.suffix(token.count - 2)))
+            }else{
+                if individualToken.count > 0{
+                    tokenList.append(individualToken)
+                }
+                
+                individualToken = token
+            }
+        }
+        
+        tokenList.append(individualToken)
+        
+        return tokenList.joined(separator: " ")
+    }
 }
 
 
