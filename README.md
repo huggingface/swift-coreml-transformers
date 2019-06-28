@@ -13,4 +13,6 @@ The pretrained Core ML model was packaged by Apple and is linked from the [main 
 
 ### Notes
 
-We use `git-lfs` to store large model files.
+We use `git-lfs` to store large model files and it is required to obtain some of the files the app needs to run.
+See how to install `git-lfs`on the [installation page](https://git-lfs.github.com/)
+
