@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVFoundation
+
 
 class ViewController: UIViewController {
     @IBOutlet weak var shuffleBtn: UIButton!
@@ -57,8 +59,16 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 self.answerLabel.text = prediction.answer
                 self.loaderView.isLoading = false
+                self.say(text: prediction.answer)
             }
         }
+    }
+    
+    func say(text: String) {
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
+        let synthesizer = AVSpeechSynthesizer()
+        synthesizer.speak(utterance)
     }
 }
 
