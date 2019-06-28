@@ -60,6 +60,7 @@ class BertForQATests: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
+        /// 1.646 seconds average for inference in Simulator.
         self.measure {
             _ = m.predict(question: question, context: context)
         }
