@@ -12,7 +12,7 @@ The pretrained Core ML model was packaged by Apple and is linked from the [main 
 
 ## 🦄 Demo Time 🔥
 
-
+![demo](https://raw.githubusercontent.com/huggingface/swift-coreml-transformers/master/media/coreml-squad-small.gif)
 
 Apple demo at WWDC 2019
 
