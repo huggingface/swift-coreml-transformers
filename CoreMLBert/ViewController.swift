@@ -45,15 +45,20 @@ class ViewController: UIViewController {
     }
     
     @objc func answer() {
+        answerLabel.text = "Loading..."
         loaderView.isLoading = true
-
+        
         let question = questionField.text ?? ""
         let context = subjectField.text ?? ""
-        let prediction = m.predict(question: question, context: context)
-        print("🎉", prediction)
-        answerLabel.text = prediction.answer
         
-        loaderView.isLoading = false
+        DispatchQueue.global(qos: .userInitiated).async {
+            let prediction = self.m.predict(question: question, context: context)
+            print("🎉", prediction)
+            DispatchQueue.main.async {
+                self.answerLabel.text = prediction.answer
+                self.loaderView.isLoading = false
+            }
+        }
     }
 }
 
