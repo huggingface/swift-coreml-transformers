@@ -66,7 +66,7 @@ class ViewController: UIViewController {
     
     func say(text: String) {
         let utterance = AVSpeechUtterance(string: text)
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         let synthesizer = AVSpeechSynthesizer()
         synthesizer.speak(utterance)
     }
