@@ -266,3 +266,5 @@ let byteEncoder: Dictionary<UTF8.CodeUnit, String> = [
     160: "\u{0142}",
     173: "\u{0143}",
 ]
+
+let byteDecoder = Utils.invert(byteEncoder)

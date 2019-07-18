@@ -29,7 +29,8 @@
 		796DF57622E1039C00140C02 /* GPT2ByteEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796DF51922E0FF7A00140C02 /* GPT2ByteEncoder.swift */; };
 		796DF57722E1047B00140C02 /* gpt2-merges.txt in Resources */ = {isa = PBXBuildFile; fileRef = 796DF51322E0EE7800140C02 /* gpt2-merges.txt */; };
 		796DF57822E1047B00140C02 /* gpt2-vocab.json in Resources */ = {isa = PBXBuildFile; fileRef = 796DF51422E0EE7800140C02 /* gpt2-vocab.json */; };
-		796DF57A22E104A100140C02 /* encoded_tokens.json in Resources */ = {isa = PBXBuildFile; fileRef = 796DF57922E104A000140C02 /* encoded_tokens.json */; };
+		796DF57E22E1209B00140C02 /* encoded_tokens.json in Resources */ = {isa = PBXBuildFile; fileRef = 796DF57D22E1209B00140C02 /* encoded_tokens.json */; };
+		796DF57F22E1209B00140C02 /* encoded_tokens.json in Resources */ = {isa = PBXBuildFile; fileRef = 796DF57D22E1209B00140C02 /* encoded_tokens.json */; };
 		79F2CC5C22C50078009F8551 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC5B22C50078009F8551 /* AppDelegate.swift */; };
 		79F2CC5E22C50078009F8551 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC5D22C50078009F8551 /* SceneDelegate.swift */; };
 		79F2CC6022C50078009F8551 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC5F22C50078009F8551 /* ViewController.swift */; };
@@ -95,7 +96,7 @@
 		796DF56222E1026800140C02 /* CoreMLGPT2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreMLGPT2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		796DF56622E1026800140C02 /* CoreMLGPT2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLGPT2Tests.swift; sourceTree = "<group>"; };
 		796DF56822E1026800140C02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		796DF57922E104A000140C02 /* encoded_tokens.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = encoded_tokens.json; sourceTree = "<group>"; };
+		796DF57D22E1209B00140C02 /* encoded_tokens.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = encoded_tokens.json; sourceTree = "<group>"; };
 		79F2CC5822C50078009F8551 /* CoreMLBert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreMLBert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79F2CC5B22C50078009F8551 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79F2CC5D22C50078009F8551 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -165,7 +166,7 @@
 				79F2CC9022C5590C009F8551 /* BERTSQUADFP16.mlmodel */,
 				796DF51322E0EE7800140C02 /* gpt2-merges.txt */,
 				796DF51422E0EE7800140C02 /* gpt2-vocab.json */,
-				796DF57922E104A000140C02 /* encoded_tokens.json */,
+				796DF57D22E1209B00140C02 /* encoded_tokens.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -382,7 +383,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				796DF57A22E104A100140C02 /* encoded_tokens.json in Resources */,
+				796DF57F22E1209B00140C02 /* encoded_tokens.json in Resources */,
 				796DF55C22E1026700140C02 /* LaunchScreen.storyboard in Resources */,
 				796DF55922E1026700140C02 /* Assets.xcassets in Resources */,
 				796DF57722E1047B00140C02 /* gpt2-merges.txt in Resources */,
@@ -408,6 +409,7 @@
 				79F2CC8E22C55413009F8551 /* tokenized_questions.json in Resources */,
 				796DF51522E0EE7800140C02 /* gpt2-merges.txt in Resources */,
 				79F2CC6522C5007B009F8551 /* Assets.xcassets in Resources */,
+				796DF57E22E1209B00140C02 /* encoded_tokens.json in Resources */,
 				79F2CC6322C50078009F8551 /* Main.storyboard in Resources */,
 				7944CDBF22C501D6000C0B1E /* dev-v1.1.json in Resources */,
 				796DF51622E0EE7800140C02 /* gpt2-vocab.json in Resources */,

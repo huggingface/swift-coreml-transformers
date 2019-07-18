@@ -46,6 +46,8 @@ fileprivate extension String {
 
 class GPT2Tokenizer {
     let bpeRanks: Dictionary<BytePair, Int>
+    private let encoder: [String: Int]
+    private let decoder: [Int: String]
     
     init() {
         let url = Bundle.main.url(forResource: "gpt2-merges", withExtension: "txt")!
@@ -58,6 +60,15 @@ class GPT2Tokenizer {
             bpeRanks[bp] = i - 1
         }
         self.bpeRanks = bpeRanks
+        
+        self.encoder = {
+            let url = Bundle.main.url(forResource: "gpt2-vocab", withExtension: "json")!
+            let json = try! Data(contentsOf: url)
+            let decoder = JSONDecoder()
+            let vocab = try! decoder.decode([String: Int].self, from: json)
+            return vocab
+        }()
+        self.decoder = Utils.invert(self.encoder)
     }
     
     func byteEncode(text: String) -> [String] {
@@ -68,7 +79,83 @@ class GPT2Tokenizer {
         }
     }
     
-    func tokenize(text: String) {
-        print("===")
+    private func getPairs(word: [String]) -> Set<BytePair> {
+        var s = Set<BytePair>()
+        for i in 0..<word.count-1 {
+            let bp = BytePair(
+                word[i],
+                word[i+1]
+            )
+            s.insert(bp)
+        }
+        return s
+    }
+    
+    func bpe(token: String) -> String {
+        if token.count <= 1 {
+            return token
+        }
+        
+        var word = Array(token).map { String($0) }
+        var pairs = Array(getPairs(word: word))
+        
+        while true {
+            let bigrams = pairs.filter { (bp) -> Bool in bpeRanks[bp] != nil }
+            if bigrams.count == 0 {
+                break
+            }
+            let bigram = bigrams.min { (bp1, bp2) -> Bool in
+                return bpeRanks[bp1]! < bpeRanks[bp2]!
+            }!
+            let first = bigram.a
+            let second = bigram.b
+            var newWord: [String] = []
+            var i = 0
+            while i < word.count {
+                if let j = word[i..<word.count].firstIndex(of: first) {
+                    newWord.append(contentsOf: word[i..<j])
+                    i = j
+                } else {
+                    newWord.append(contentsOf: word[i..<word.count])
+                    break
+                }
+                
+                if word[i] == first && i < word.count - 1 && word[i+1] == second {
+                    newWord.append(first+second)
+                    i += 2
+                } else {
+                    newWord.append(word[i])
+                    i += 1
+                }
+            }
+            word = newWord
+            if word.count == 1 {
+                break
+            } else {
+                pairs = Array(getPairs(word: word))
+            }
+        }
+        return word.joined(separator: " ")
+    }
+    
+    func tokenize(text: String) -> [String] {
+        var tokens: [String] = []
+        for token in self.byteEncode(text: text) {
+            let xx = self.bpe(token: token).split(separator: " ").map { String($0) }
+            tokens.append(contentsOf: xx)
+        }
+        return tokens
+    }
+    
+    /// Main entry point
+    func encode(text: String) -> [Int] {
+        return tokenize(text: text).map { encoder[$0]! }
+    }
+    
+    /// Decode
+    func decode(tokens: [Int]) -> String {
+        let text = tokens.map { decoder[$0]! }.joined(separator: "")
+        let utfCodepoints = text.map { byteDecoder[String($0)]! }
+        return String(decoding: utfCodepoints, as: UTF8.self)
     }
 }

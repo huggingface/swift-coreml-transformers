@@ -45,5 +45,14 @@ struct Utils {
         let endIndex = s.index(startIndex, offsetBy: r.upperBound - r.lowerBound)
         return String(s[startIndex..<endIndex])
     }
+    
+    /// Invert a (k, v) dictionary
+    static func invert<K, V>(_ dict: Dictionary<K, V>) -> Dictionary<V, K> {
+        var inverted: [V: K] = [:]
+        for (k, v) in dict {
+            inverted[v] = k
+        }
+        return inverted
+    }
 }
 
