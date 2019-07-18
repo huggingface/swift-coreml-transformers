@@ -9,6 +9,18 @@
 /* Begin PBXBuildFile section */
 		7944CDBF22C501D6000C0B1E /* dev-v1.1.json in Resources */ = {isa = PBXBuildFile; fileRef = 7944CDBE22C501D6000C0B1E /* dev-v1.1.json */; };
 		7944CDC022C501D6000C0B1E /* dev-v1.1.json in Resources */ = {isa = PBXBuildFile; fileRef = 7944CDBE22C501D6000C0B1E /* dev-v1.1.json */; };
+		796DF51022E0EB1D00140C02 /* GPT2Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796DF50F22E0EB1D00140C02 /* GPT2Tokenizer.swift */; };
+		796DF51222E0ED5900140C02 /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796DF51122E0ED5900140C02 /* DummyViewController.swift */; };
+		796DF51522E0EE7800140C02 /* gpt2-merges.txt in Resources */ = {isa = PBXBuildFile; fileRef = 796DF51322E0EE7800140C02 /* gpt2-merges.txt */; };
+		796DF51622E0EE7800140C02 /* gpt2-vocab.json in Resources */ = {isa = PBXBuildFile; fileRef = 796DF51422E0EE7800140C02 /* gpt2-vocab.json */; };
+		796DF51A22E0FF7A00140C02 /* GPT2ByteEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796DF51922E0FF7A00140C02 /* GPT2ByteEncoder.swift */; };
+		796DF55022E1026700140C02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796DF54F22E1026700140C02 /* AppDelegate.swift */; };
+		796DF55222E1026700140C02 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796DF55122E1026700140C02 /* SceneDelegate.swift */; };
+		796DF55422E1026700140C02 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796DF55322E1026700140C02 /* ViewController.swift */; };
+		796DF55722E1026700140C02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 796DF55522E1026700140C02 /* Main.storyboard */; };
+		796DF55922E1026700140C02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 796DF55822E1026700140C02 /* Assets.xcassets */; };
+		796DF55C22E1026700140C02 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 796DF55A22E1026700140C02 /* LaunchScreen.storyboard */; };
+		796DF56722E1026800140C02 /* CoreMLGPT2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796DF56622E1026800140C02 /* CoreMLGPT2Tests.swift */; };
 		79F2CC5C22C50078009F8551 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC5B22C50078009F8551 /* AppDelegate.swift */; };
 		79F2CC5E22C50078009F8551 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC5D22C50078009F8551 /* SceneDelegate.swift */; };
 		79F2CC6022C50078009F8551 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC5F22C50078009F8551 /* ViewController.swift */; };
@@ -41,6 +53,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		796DF56322E1026800140C02 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 79F2CC5022C50078009F8551 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 796DF54C22E1026700140C02;
+			remoteInfo = CoreMLGPT2;
+		};
 		79F2CC6F22C5007B009F8551 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 79F2CC5022C50078009F8551 /* Project object */;
@@ -52,6 +71,22 @@
 
 /* Begin PBXFileReference section */
 		7944CDBE22C501D6000C0B1E /* dev-v1.1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "dev-v1.1.json"; sourceTree = "<group>"; };
+		796DF50F22E0EB1D00140C02 /* GPT2Tokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPT2Tokenizer.swift; sourceTree = "<group>"; };
+		796DF51122E0ED5900140C02 /* DummyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewController.swift; sourceTree = "<group>"; };
+		796DF51322E0EE7800140C02 /* gpt2-merges.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "gpt2-merges.txt"; sourceTree = "<group>"; };
+		796DF51422E0EE7800140C02 /* gpt2-vocab.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "gpt2-vocab.json"; sourceTree = "<group>"; };
+		796DF51922E0FF7A00140C02 /* GPT2ByteEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPT2ByteEncoder.swift; sourceTree = "<group>"; };
+		796DF54D22E1026700140C02 /* CoreMLGPT2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreMLGPT2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		796DF54F22E1026700140C02 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		796DF55122E1026700140C02 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		796DF55322E1026700140C02 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		796DF55622E1026700140C02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		796DF55822E1026700140C02 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		796DF55B22E1026700140C02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		796DF55D22E1026800140C02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		796DF56222E1026800140C02 /* CoreMLGPT2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreMLGPT2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		796DF56622E1026800140C02 /* CoreMLGPT2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLGPT2Tests.swift; sourceTree = "<group>"; };
+		796DF56822E1026800140C02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		79F2CC5822C50078009F8551 /* CoreMLBert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreMLBert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79F2CC5B22C50078009F8551 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79F2CC5D22C50078009F8551 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +114,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		796DF54A22E1026700140C02 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		796DF55F22E1026800140C02 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		79F2CC5522C50078009F8551 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -105,8 +154,33 @@
 				79F2CC8D22C55413009F8551 /* tokenized_questions.json */,
 				79F2CC9F22C666C7009F8551 /* question_tokens.json */,
 				79F2CC9022C5590C009F8551 /* BERTSQUADFP16.mlmodel */,
+				796DF51322E0EE7800140C02 /* gpt2-merges.txt */,
+				796DF51422E0EE7800140C02 /* gpt2-vocab.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		796DF54E22E1026700140C02 /* CoreMLGPT2 */ = {
+			isa = PBXGroup;
+			children = (
+				796DF54F22E1026700140C02 /* AppDelegate.swift */,
+				796DF55122E1026700140C02 /* SceneDelegate.swift */,
+				796DF55322E1026700140C02 /* ViewController.swift */,
+				796DF55522E1026700140C02 /* Main.storyboard */,
+				796DF55822E1026700140C02 /* Assets.xcassets */,
+				796DF55A22E1026700140C02 /* LaunchScreen.storyboard */,
+				796DF55D22E1026800140C02 /* Info.plist */,
+			);
+			path = CoreMLGPT2;
+			sourceTree = "<group>";
+		};
+		796DF56522E1026800140C02 /* CoreMLGPT2Tests */ = {
+			isa = PBXGroup;
+			children = (
+				796DF56622E1026800140C02 /* CoreMLGPT2Tests.swift */,
+				796DF56822E1026800140C02 /* Info.plist */,
+			);
+			path = CoreMLGPT2Tests;
 			sourceTree = "<group>";
 		};
 		79F2CC4F22C50078009F8551 = {
@@ -116,6 +190,8 @@
 				79F2CC7F22C50410009F8551 /* Sources */,
 				79F2CC5A22C50078009F8551 /* CoreMLBert */,
 				79F2CC7122C5007B009F8551 /* CoreMLBertTests */,
+				796DF54E22E1026700140C02 /* CoreMLGPT2 */,
+				796DF56522E1026800140C02 /* CoreMLGPT2Tests */,
 				79F2CC5922C50078009F8551 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -125,6 +201,8 @@
 			children = (
 				79F2CC5822C50078009F8551 /* CoreMLBert.app */,
 				79F2CC6E22C5007B009F8551 /* CoreMLBertTests.xctest */,
+				796DF54D22E1026700140C02 /* CoreMLGPT2.app */,
+				796DF56222E1026800140C02 /* CoreMLGPT2Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -135,6 +213,7 @@
 				79F2CC5B22C50078009F8551 /* AppDelegate.swift */,
 				79F2CC5D22C50078009F8551 /* SceneDelegate.swift */,
 				79F2CC5F22C50078009F8551 /* ViewController.swift */,
+				796DF51122E0ED5900140C02 /* DummyViewController.swift */,
 				79F2CC6122C50078009F8551 /* Main.storyboard */,
 				79F2CC6422C5007B009F8551 /* Assets.xcassets */,
 				79F2CC6622C5007B009F8551 /* LaunchScreen.storyboard */,
@@ -163,6 +242,8 @@
 				79F2CC8A22C549C1009F8551 /* Utils.swift */,
 				79F2CC9622C56890009F8551 /* Math.swift */,
 				79F2CC9922C57132009F8551 /* MLMultiArray+Utils.swift */,
+				796DF50F22E0EB1D00140C02 /* GPT2Tokenizer.swift */,
+				796DF51922E0FF7A00140C02 /* GPT2ByteEncoder.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -170,6 +251,41 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		796DF54C22E1026700140C02 /* CoreMLGPT2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 796DF56922E1026800140C02 /* Build configuration list for PBXNativeTarget "CoreMLGPT2" */;
+			buildPhases = (
+				796DF54922E1026700140C02 /* Sources */,
+				796DF54A22E1026700140C02 /* Frameworks */,
+				796DF54B22E1026700140C02 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CoreMLGPT2;
+			productName = CoreMLGPT2;
+			productReference = 796DF54D22E1026700140C02 /* CoreMLGPT2.app */;
+			productType = "com.apple.product-type.application";
+		};
+		796DF56122E1026800140C02 /* CoreMLGPT2Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 796DF56C22E1026800140C02 /* Build configuration list for PBXNativeTarget "CoreMLGPT2Tests" */;
+			buildPhases = (
+				796DF55E22E1026800140C02 /* Sources */,
+				796DF55F22E1026800140C02 /* Frameworks */,
+				796DF56022E1026800140C02 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				796DF56422E1026800140C02 /* PBXTargetDependency */,
+			);
+			name = CoreMLGPT2Tests;
+			productName = CoreMLGPT2Tests;
+			productReference = 796DF56222E1026800140C02 /* CoreMLGPT2Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		79F2CC5722C50078009F8551 /* CoreMLBert */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 79F2CC7722C5007B009F8551 /* Build configuration list for PBXNativeTarget "CoreMLBert" */;
@@ -215,6 +331,13 @@
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Hugging Face";
 				TargetAttributes = {
+					796DF54C22E1026700140C02 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+					796DF56122E1026800140C02 = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 796DF54C22E1026700140C02;
+					};
 					79F2CC5722C50078009F8551 = {
 						CreatedOnToolsVersion = 11.0;
 					};
@@ -239,11 +362,30 @@
 			targets = (
 				79F2CC5722C50078009F8551 /* CoreMLBert */,
 				79F2CC6D22C5007B009F8551 /* CoreMLBertTests */,
+				796DF54C22E1026700140C02 /* CoreMLGPT2 */,
+				796DF56122E1026800140C02 /* CoreMLGPT2Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		796DF54B22E1026700140C02 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				796DF55C22E1026700140C02 /* LaunchScreen.storyboard in Resources */,
+				796DF55922E1026700140C02 /* Assets.xcassets in Resources */,
+				796DF55722E1026700140C02 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		796DF56022E1026800140C02 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		79F2CC5622C50078009F8551 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -252,9 +394,11 @@
 				79F2CC6822C5007B009F8551 /* LaunchScreen.storyboard in Resources */,
 				79F2CC8822C51E03009F8551 /* basic_tokenized_questions.json in Resources */,
 				79F2CC8E22C55413009F8551 /* tokenized_questions.json in Resources */,
+				796DF51522E0EE7800140C02 /* gpt2-merges.txt in Resources */,
 				79F2CC6522C5007B009F8551 /* Assets.xcassets in Resources */,
 				79F2CC6322C50078009F8551 /* Main.storyboard in Resources */,
 				7944CDBF22C501D6000C0B1E /* dev-v1.1.json in Resources */,
+				796DF51622E0EE7800140C02 /* gpt2-vocab.json in Resources */,
 				79F2CCA022C666C7009F8551 /* question_tokens.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,16 +417,37 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		796DF54922E1026700140C02 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				796DF55422E1026700140C02 /* ViewController.swift in Sources */,
+				796DF55022E1026700140C02 /* AppDelegate.swift in Sources */,
+				796DF55222E1026700140C02 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		796DF55E22E1026800140C02 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				796DF56722E1026800140C02 /* CoreMLGPT2Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		79F2CC5422C50078009F8551 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				79F2CC9A22C57132009F8551 /* MLMultiArray+Utils.swift in Sources */,
+				796DF51222E0ED5900140C02 /* DummyViewController.swift in Sources */,
 				79F2CCA222C6717E009F8551 /* LoaderView.swift in Sources */,
 				79F2CC6022C50078009F8551 /* ViewController.swift in Sources */,
 				79F2CC8122C5041C009F8551 /* SquadDataset.swift in Sources */,
+				796DF51A22E0FF7A00140C02 /* GPT2ByteEncoder.swift in Sources */,
 				79F2CC9722C56891009F8551 /* Math.swift in Sources */,
 				79F2CC5C22C50078009F8551 /* AppDelegate.swift in Sources */,
+				796DF51022E0EB1D00140C02 /* GPT2Tokenizer.swift in Sources */,
 				79F2CC9422C56693009F8551 /* BertForQuestionAnswering.swift in Sources */,
 				79F2CC9122C5590C009F8551 /* BERTSQUADFP16.mlmodel in Sources */,
 				79F2CC8322C50E00009F8551 /* BertTokenizer.swift in Sources */,
@@ -309,6 +474,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		796DF56422E1026800140C02 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 796DF54C22E1026700140C02 /* CoreMLGPT2 */;
+			targetProxy = 796DF56322E1026800140C02 /* PBXContainerItemProxy */;
+		};
 		79F2CC7022C5007B009F8551 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 79F2CC5722C50078009F8551 /* CoreMLBert */;
@@ -317,6 +487,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		796DF55522E1026700140C02 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				796DF55622E1026700140C02 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		796DF55A22E1026700140C02 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				796DF55B22E1026700140C02 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		79F2CC6122C50078009F8551 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -336,6 +522,84 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		796DF56A22E1026800140C02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2EADP68M95;
+				INFOPLIST_FILE = CoreMLGPT2/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ai.katia.Katia.CoreMLGPT2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		796DF56B22E1026800140C02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2EADP68M95;
+				INFOPLIST_FILE = CoreMLGPT2/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ai.katia.Katia.CoreMLGPT2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		796DF56D22E1026800140C02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2EADP68M95;
+				INFOPLIST_FILE = CoreMLGPT2Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ai.katia.Katia.CoreMLGPT2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoreMLGPT2.app/CoreMLGPT2";
+			};
+			name = Debug;
+		};
+		796DF56E22E1026800140C02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2EADP68M95;
+				INFOPLIST_FILE = CoreMLGPT2Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ai.katia.Katia.CoreMLGPT2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoreMLGPT2.app/CoreMLGPT2";
+			};
+			name = Release;
+		};
 		79F2CC7522C5007B009F8551 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -531,6 +795,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		796DF56922E1026800140C02 /* Build configuration list for PBXNativeTarget "CoreMLGPT2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				796DF56A22E1026800140C02 /* Debug */,
+				796DF56B22E1026800140C02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		796DF56C22E1026800140C02 /* Build configuration list for PBXNativeTarget "CoreMLGPT2Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				796DF56D22E1026800140C02 /* Debug */,
+				796DF56E22E1026800140C02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		79F2CC5322C50078009F8551 /* Build configuration list for PBXProject "CoreMLBert" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
