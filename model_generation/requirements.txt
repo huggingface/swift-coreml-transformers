@@ -1,0 +1,2 @@
+coremltools==3.0b3
+pytorch-transformers==1.0.0
