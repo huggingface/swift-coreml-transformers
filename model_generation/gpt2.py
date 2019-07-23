@@ -63,15 +63,7 @@ builder.add_embedding(
 builder.add_add_broadcastable(
 	name='embeddings_addition',
 	input_names=['token_embeddings', 'positional_embeddings'],
-	output_name='embeddings_addition'
-)
-
-# Input: (seq, 1, 768, 1, 1), Output: (1, seq, 768, 1, 1)
-builder.add_transpose(
-	name='embeddings_addition_t',
-	input_name='embeddings_addition',
-	output_name=f"{0}_previous_block",
-	axes=[1, 0, 2, 3, 4]
+	output_name=f'{0}_previous_block'
 )
 
 steps = 1
@@ -275,10 +267,18 @@ for i in range(steps):
 		has_bias=True
 	)
 
+	# Input: (seq, 1, 768, 1, 1), Output: (1, seq, 768, 1, 1)
+	builder.add_transpose(
+		name=f"{i}_previous_block_t",
+		input_name=f'{i}_previous_block',
+		output_name=f"{i}_previous_block_t",
+		axes=[1, 0, 2, 3, 4]
+	)
+
 	# Input: [(1, seq, 768, 1, 1), (1, seq, 768, 1, 1)], Output: (1, seq, 768, 1, 1)
 	builder.add_add_broadcastable(
 		name=f"{i}_block_xa_sum",
-		input_names=[f"{i}_previous_block", f"{i}_block_attn_conv_proj"],
+		input_names=[f"{i}_previous_block_t", f"{i}_block_attn_conv_proj"],
 		output_name=f"{i}_block_xa_sum"
 	)
 
@@ -376,4 +376,4 @@ equal = np.amax(predictions - mlp_conv_proj.detach().numpy())
 print(predictions)
 
 
-# save_spec(builder.spec, 'gpt2.mlmodel')
+save_spec(builder.spec, 'gpt2.mlmodel')
