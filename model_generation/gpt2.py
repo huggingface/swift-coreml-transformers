@@ -3,15 +3,19 @@ import coremltools.models.datatypes as datatypes
 from coremltools.models import neural_network as neural_network
 from coremltools.models.utils import save_spec
 import numpy as np
-from test import *
+# from test import *
 
 # get weights
-from pytorch_transformers import GPT2Model
-model = GPT2Model.from_pretrained("gpt2")
+from pytorch_transformers import GPT2LMHeadModel
+model_name = "gpt2-medium"
+lm_head_model = GPT2LMHeadModel.from_pretrained(model_name)
+model = lm_head_model.transformer
+
 wte = model.wte.weight.data.numpy().transpose() # shape (768, 50257) /!\ i hate this
 wpe = model.wpe.weight.data.numpy().transpose() # shape (768, 1024)
 
-sequence_length = 3
+sequence_length = 1512
+steps = 12
 
 # build model
 input_features = [
@@ -65,8 +69,6 @@ builder.add_add_broadcastable(
 	input_names=['token_embeddings', 'positional_embeddings'],
 	output_name=f'{0}_previous_block'
 )
-
-steps = 1
 
 for i in range(steps):
 	print(i)
@@ -200,6 +202,7 @@ for i in range(steps):
 		name=f"{i}_block_attn_afterbias",
 		input_name=f"{i}_block_attn_bias",
 		output_name=f"{i}_block_attn_afterbias",
+		# output_name=f"output_logits",
 		b=bias_constant_0,
 		shape_bias=[sequence_length, sequence_length],
 	)
@@ -223,7 +226,6 @@ for i in range(steps):
 		output_name=f"{i}_expandit",
 		axes=[0, 1]
 	)
-
 
 	builder.add_batched_mat_mul(
 		name=f"{i}_block_full_attention",
@@ -279,7 +281,8 @@ for i in range(steps):
 	builder.add_add_broadcastable(
 		name=f"{i}_block_xa_sum",
 		input_names=[f"{i}_previous_block_t", f"{i}_block_attn_conv_proj"],
-		output_name=f"{i}_block_xa_sum"
+		output_name=f"{i}_block_xa_sum",
+		# output_name=f"output_logits"
 	)
 
 	ln_2_weight = model.h[i].ln_2.weight.data.numpy().reshape((1, 1, 768, 1, 1))
@@ -299,6 +302,7 @@ for i in range(steps):
 	builder.add_scale(
 		name=f"{i}_block_ln_2_scaled",
 		input_name=f"{i}_block_ln_2",
+		# output_name=f"output_logits",
 		output_name=f"{i}_block_ln_2_scaled",
 		W=ln_2_weight,
 		b=ln_2_bias,
@@ -315,6 +319,7 @@ for i in range(steps):
 		name=f"{i}_block_mlp_conv_fc",
 		input_name=f"{i}_block_ln_2_scaled",
 		output_name=f"{i}_block_mlp_conv_fc",
+		# output_name=f"output_logits",
 		input_channels=768,
 		output_channels=3072,
 		W=mlp_conv_1D_fc_weights,
@@ -326,6 +331,7 @@ for i in range(steps):
 		name=f"{i}_block_mlp_gelu",
 		input_name=f"{i}_block_mlp_conv_fc",
 		output_name=f"{i}_block_mlp_gelu",
+		# output_name=f"output_logits",
 		mode='TANH_APPROXIMATION'
 	)
 
@@ -337,6 +343,7 @@ for i in range(steps):
 		name=f"{i}_block_mlp_conv_proj",
 		input_name=f"{i}_block_mlp_gelu",
 		output_name=f"{i}_block_mlp_conv_proj",
+		# output_name=f"output_logits",
 		input_channels=3072,
 		output_channels=768,
 		W=mlp_conv_1D_proj_weights,
@@ -347,19 +354,62 @@ for i in range(steps):
 	builder.add_add_broadcastable(
 		name=f"{i}_block_xm_sum",
 		input_names=[f"{i}_block_xa_sum", f"{i}_block_mlp_conv_proj"],
-		output_name=f"{i + 1}_previous_block"
+		# output_name=f"output_logits"
+		output_name=f"{i + 1}_previous_block_final"
 	)
 
-builder.add_copy(
-	name="output_logits",
-	input_name=f"{steps}_previous_block",
-	output_name="output_logits"
+	builder.add_transpose(
+		name=f"{i}_block_xm_sum_t",
+		input_name=f"{i + 1}_previous_block_final",
+		output_name=f"{i + 1}_previous_block",
+		axes=[1, 0, 2, 3, 4]
+	)
+
+
+ln_f_weight = model.ln_f.weight.data.numpy().reshape((1, 1, 768, 1, 1))
+ln_f_bias = model.ln_f.bias.data.numpy().reshape((1, 1, 768, 1, 1))
+ln_f_epsilon = model.ln_f.variance_epsilon
+
+# Input: (1, seq, 768, 1, 1), Output:
+builder.add_mvn(
+	name=f"ln_f",
+	input_name=f"{steps}_previous_block_final",
+	output_name=f"ln_f",
+	# output_name=f"output_logits",
+	across_channels=True,
+	normalize_variance=True,
+	epsilon=ln_f_epsilon
+)
+
+builder.add_scale(
+	name=f"ln_f_scaled",
+	input_name=f"ln_f",
+	output_name=f"ln_f_scaled",
+	# output_name=f"output_logits",
+	W=ln_f_weight,
+	b=ln_f_bias,
+	has_bias=True,
+	shape_scale=[768],
+	shape_bias=[768]
+)
+
+lm_head_weights = lm_head_model.lm_head.weight.data.numpy().reshape((1, 50257, 768, 1, 1))
+
+builder.add_inner_product(
+	name="lm_head",
+	input_name="ln_f_scaled",
+	output_name="output_logits",
+	input_channels=768,
+	output_channels=50257,
+	W=lm_head_weights,
+	b=None,
+	has_bias=False
 )
 
 # compile spec to model
-model = coremltools.models.MLModel(builder.spec)
+mlmodel = coremltools.models.MLModel(builder.spec)
 
-# save_spec(builder.spec, 'gpt2.mlmodel')
+save_spec(builder.spec, f'{model_name}-{sequence_length}.mlmodel')
 # model = coremltools.models.MLModel('gpt2.mlmodel')
 
 input_ids = np.zeros(sequence_length)
@@ -370,10 +420,10 @@ input_data = {
 	'position_ids': position_ids,
 }
 
-predictions = model.predict(input_data)["output_logits"]
-equal = np.amax(predictions - mlp_conv_proj.detach().numpy())
+# predictions = mlmodel.predict(input_data)["output_logits"]
+# equal = np.amax(predictions - mlp_conv_proj.detach().numpy())
 
 print(predictions)
 
 
-save_spec(builder.spec, 'gpt2.mlmodel')
+# save_spec(builder.spec, 'gpt2.mlmodel')
