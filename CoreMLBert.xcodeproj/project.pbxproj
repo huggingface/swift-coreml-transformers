@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		791D169322EA4918004D7A79 /* MultiArrayUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791D169222EA4918004D7A79 /* MultiArrayUtilsTests.swift */; };
+		7934AF8822EA4CEC00396AD5 /* gpt2-512.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7934AF8722EA4CEC00396AD5 /* gpt2-512.mlmodel */; };
 		7944CDBF22C501D6000C0B1E /* dev-v1.1.json in Resources */ = {isa = PBXBuildFile; fileRef = 7944CDBE22C501D6000C0B1E /* dev-v1.1.json */; };
 		7944CDC022C501D6000C0B1E /* dev-v1.1.json in Resources */ = {isa = PBXBuildFile; fileRef = 7944CDBE22C501D6000C0B1E /* dev-v1.1.json */; };
 		796DF51022E0EB1D00140C02 /* GPT2Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796DF50F22E0EB1D00140C02 /* GPT2Tokenizer.swift */; };
@@ -61,8 +62,6 @@
 		79F2CCA022C666C7009F8551 /* question_tokens.json in Resources */ = {isa = PBXBuildFile; fileRef = 79F2CC9F22C666C7009F8551 /* question_tokens.json */; };
 		79F2CCA222C6717E009F8551 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CCA122C6717D009F8551 /* LoaderView.swift */; };
 		79F7060E22EA0CA900C4432C /* BERTSQUADFP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC9022C5590C009F8551 /* BERTSQUADFP16.mlmodel */; };
-		79F7061022EA472D00C4432C /* gpt2-256.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 79F7060F22EA472D00C4432C /* gpt2-256.mlmodel */; };
-		79F7061122EA472D00C4432C /* gpt2-256.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 79F7060F22EA472D00C4432C /* gpt2-256.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +83,7 @@
 
 /* Begin PBXFileReference section */
 		791D169222EA4918004D7A79 /* MultiArrayUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiArrayUtilsTests.swift; sourceTree = "<group>"; };
+		7934AF8722EA4CEC00396AD5 /* gpt2-512.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "gpt2-512.mlmodel"; sourceTree = "<group>"; };
 		7944CDBE22C501D6000C0B1E /* dev-v1.1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "dev-v1.1.json"; sourceTree = "<group>"; };
 		796DF50F22E0EB1D00140C02 /* GPT2Tokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPT2Tokenizer.swift; sourceTree = "<group>"; };
 		796DF51322E0EE7800140C02 /* gpt2-merges.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "gpt2-merges.txt"; sourceTree = "<group>"; };
@@ -126,7 +126,6 @@
 		79F2CC9D22C57825009F8551 /* BertForQATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BertForQATests.swift; sourceTree = "<group>"; };
 		79F2CC9F22C666C7009F8551 /* question_tokens.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = question_tokens.json; sourceTree = "<group>"; };
 		79F2CCA122C6717D009F8551 /* LoaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
-		79F7060F22EA472D00C4432C /* gpt2-256.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "gpt2-256.mlmodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,7 +172,7 @@
 				796DF51322E0EE7800140C02 /* gpt2-merges.txt */,
 				796DF51422E0EE7800140C02 /* gpt2-vocab.json */,
 				796DF57D22E1209B00140C02 /* encoded_tokens.json */,
-				79F7060F22EA472D00C4432C /* gpt2-256.mlmodel */,
+				7934AF8722EA4CEC00396AD5 /* gpt2-512.mlmodel */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -445,8 +444,8 @@
 			files = (
 				796DF55422E1026700140C02 /* ViewController.swift in Sources */,
 				796DF58722E2727000140C02 /* GPT2.swift in Sources */,
+				7934AF8822EA4CEC00396AD5 /* gpt2-512.mlmodel in Sources */,
 				796DF56F22E1039C00140C02 /* SquadDataset.swift in Sources */,
-				79F7061022EA472D00C4432C /* gpt2-256.mlmodel in Sources */,
 				796DF55022E1026700140C02 /* AppDelegate.swift in Sources */,
 				796DF57222E1039C00140C02 /* Utils.swift in Sources */,
 				796DF57422E1039C00140C02 /* MLMultiArray+Utils.swift in Sources */,
@@ -464,7 +463,6 @@
 			files = (
 				796DF56722E1026800140C02 /* CoreMLGPT2Tests.swift in Sources */,
 				791D169322EA4918004D7A79 /* MultiArrayUtilsTests.swift in Sources */,
-				79F7061122EA472D00C4432C /* gpt2-256.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
