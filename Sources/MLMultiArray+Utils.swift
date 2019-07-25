@@ -116,8 +116,14 @@ extension MLMultiArray {
         /// TODO: use srcPtr instead of array subscripting.
         let dstPtr = UnsafeMutablePointer<Double>(OpaquePointer(arr.dataPointer))
         for i in 0..<arr.count {
-            var index = Array(selectDims.values)
-            index.insert(i, at: sliceDim)
+            var index: [Int] = []
+            for j in 0..<shape.count {
+                if j == sliceDim {
+                    index.append(i)
+                } else {
+                    index.append(j)
+                }
+            }
             /// print("Accessing element \(index)")
             dstPtr[i] = Double(truncating: o[index as [NSNumber]])
         }
