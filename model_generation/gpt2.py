@@ -14,7 +14,7 @@ model = lm_head_model.transformer
 wte = model.wte.weight.data.numpy().transpose() # shape (768, 50257) /!\ i hate this
 wpe = model.wpe.weight.data.numpy().transpose() # shape (768, 1024)
 
-sequence_length = 1512
+sequence_length = 512
 steps = 12
 
 # build model
@@ -409,7 +409,7 @@ builder.add_inner_product(
 # compile spec to model
 mlmodel = coremltools.models.MLModel(builder.spec)
 
-save_spec(builder.spec, f'{model_name}-{sequence_length}.mlmodel')
+save_spec(builder.spec, f'../Resources/{model_name}-{sequence_length}.mlmodel')
 # model = coremltools.models.MLModel('gpt2.mlmodel')
 
 input_ids = np.zeros(sequence_length)
