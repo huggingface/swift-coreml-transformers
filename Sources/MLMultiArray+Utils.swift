@@ -10,8 +10,15 @@ import Foundation
 import CoreML
 
 extension MLMultiArray {
-    static func from(_ arr: [Int]) -> MLMultiArray {
-        let o = try! MLMultiArray(shape: [1, arr.count] as [NSNumber], dataType: .int32)
+    /// All values will be stored in the last dimension of the MLMultiArray (default is dims=1)
+    static func from(_ arr: [Int], dims: Int = 1) -> MLMultiArray {
+        var shape = Array(repeating: 1, count: dims)
+        shape[shape.count - 1] = arr.count
+        /// Examples:
+        /// dims=1 : [arr.count]
+        /// dims=2 : [1, arr.count]
+        ///
+        let o = try! MLMultiArray(shape: shape as [NSNumber], dataType: .int32)
         let ptr = UnsafeMutablePointer<Int32>(OpaquePointer(o.dataPointer))
         for (i, item) in arr.enumerated() {
             ptr[i] = Int32(item)
@@ -19,12 +26,100 @@ extension MLMultiArray {
         return o
     }
     
-    /// This will concatenate all dimenions into one one-dim array.
+    /// This will concatenate all dimensions into one one-dim array.
     static func toIntArray(_ o: MLMultiArray) -> [Int] {
         var arr = Array(repeating: 0, count: o.count)
         let ptr = UnsafeMutablePointer<Int32>(OpaquePointer(o.dataPointer))
         for i in 0..<o.count {
             arr[i] = Int(ptr[i])
+        }
+        return arr
+    }
+    
+    /// This will concatenate all dimensions into one one-dim array.
+    static func toDoubleArray(_ o: MLMultiArray) -> [Double] {
+        var arr: [Double] = Array(repeating: 0, count: o.count)
+        let ptr = UnsafeMutablePointer<Double>(OpaquePointer(o.dataPointer))
+        for i in 0..<o.count {
+            arr[i] = Double(ptr[i])
+        }
+        return arr
+    }
+    
+    /// Helper to construct a sequentially-indexed multi array,
+    /// useful for debugging and unit tests
+    /// Example in 3 dimensions:
+    /// ```
+    /// [[[ 0, 1, 2, 3 ],
+    ///   [ 4, 5, 6, 7 ],
+    ///   [ 8, 9, 10, 11 ]],
+    ///  [[ 12, 13, 14, 15 ],
+    ///   [ 16, 17, 18, 19 ],
+    ///   [ 20, 21, 22, 23 ]]]
+    /// ```
+    static func testTensor(shape: [Int]) -> MLMultiArray {
+        let arr = try! MLMultiArray(shape: shape as [NSNumber], dataType: .double)
+        let ptr = UnsafeMutablePointer<Double>(OpaquePointer(arr.dataPointer))
+        for i in 0..<arr.count {
+            ptr.advanced(by: i).pointee = Double(i)
+        }
+        return arr
+    }
+}
+
+
+extension MLMultiArray {
+    /// Provides a way to index n-dimensionals arrays a la numpy.
+    enum Indexing: Equatable {
+        case select(Int)
+        case slice
+    }
+    
+    /// Slice an array according to a list of `Indexing` enums.
+    ///
+    /// You must specify all dimensions.
+    /// Note: only one slice is supported at the moment.
+    static func slice(_ o: MLMultiArray, indexing: [Indexing]) -> MLMultiArray {
+        assert(
+            indexing.count == o.shape.count
+        )
+        assert(
+            indexing.filter { $0 == Indexing.slice }.count == 1
+        )
+        var selectDims: [Int: Int] = [:]
+        for (i, idx) in indexing.enumerated() {
+            if case .select(let select) = idx {
+                selectDims[i] = select
+            }
+        }
+        return slice(
+            o,
+            sliceDim: indexing.firstIndex { $0 == Indexing.slice }!,
+            selectDims: selectDims
+        )
+    }
+    
+    /// Slice an array according to a list, according to `sliceDim` (which dimension to slice on)
+    /// and a dictionary of `dim` to `index`.
+    ///
+    /// You must select all other dimensions than the slice dimension (cf. the assert).
+    static func slice(_ o: MLMultiArray, sliceDim: Int, selectDims: [Int: Int]) -> MLMultiArray {
+        assert(
+            selectDims.count + 1 == o.shape.count
+        )
+        var shape: [NSNumber] = Array(repeating: 1, count: o.shape.count)
+        shape[sliceDim] = o.shape[sliceDim]
+        /// print("About to slice ndarray of shape \(o.shape) into ndarray of shape \(shape)")
+        let arr = try! MLMultiArray(shape: shape, dataType: .double)
+        
+        /// let srcPtr = UnsafeMutablePointer<Double>(OpaquePointer(o.dataPointer))
+        /// TODO: use srcPtr instead of array subscripting.
+        let dstPtr = UnsafeMutablePointer<Double>(OpaquePointer(arr.dataPointer))
+        for i in 0..<arr.count {
+            var index = Array(selectDims.values)
+            index.insert(i, at: sliceDim)
+            /// print("Accessing element \(index)")
+            dstPtr[i] = Double(truncating: o[index as [NSNumber]])
         }
         return arr
     }

@@ -63,7 +63,7 @@ class BertForQuestionAnswering {
             tokenizer.tokenToId(token: "[SEP]")
         )
         allTokens.append(contentsOf: Array(repeating: 0, count: nPadding))
-        let word_id = MLMultiArray.from(allTokens)
+        let word_id = MLMultiArray.from(allTokens, dims: 2)
         
         /// Sequence of token-types. Values of 0 for the start token, question tokens and the question separator. Value 1 for the document tokens and the end separator. The sequence is padded with 0 values to length 384.
         var tokenTypes = Array(repeating: 0, count: seqLen)
@@ -71,11 +71,12 @@ class BertForQuestionAnswering {
         for i in startPos...startPos+tokensContext.count {
             tokenTypes[i] = 1
         }
-        let word_type = MLMultiArray.from(tokenTypes)
+        let word_type = MLMultiArray.from(tokenTypes, dims: 2)
         
         /// Fixed sequence of values from 0 to 383.
         let position = MLMultiArray.from(
-            Array(0..<seqLen)
+            Array(0..<seqLen),
+            dims: 2
         )
         
         /// A masking matrix (logits). It has zero values in the first X number of columns, where X = number of input tokens without the padding,and value -1e+4 in the remaining 384-X (padding) columns.

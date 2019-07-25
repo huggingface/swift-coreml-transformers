@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		791D169322EA4918004D7A79 /* MultiArrayUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791D169222EA4918004D7A79 /* MultiArrayUtilsTests.swift */; };
 		7944CDBF22C501D6000C0B1E /* dev-v1.1.json in Resources */ = {isa = PBXBuildFile; fileRef = 7944CDBE22C501D6000C0B1E /* dev-v1.1.json */; };
 		7944CDC022C501D6000C0B1E /* dev-v1.1.json in Resources */ = {isa = PBXBuildFile; fileRef = 7944CDBE22C501D6000C0B1E /* dev-v1.1.json */; };
 		796DF51022E0EB1D00140C02 /* GPT2Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796DF50F22E0EB1D00140C02 /* GPT2Tokenizer.swift */; };
@@ -29,8 +30,8 @@
 		796DF57622E1039C00140C02 /* GPT2ByteEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796DF51922E0FF7A00140C02 /* GPT2ByteEncoder.swift */; };
 		796DF57722E1047B00140C02 /* gpt2-merges.txt in Resources */ = {isa = PBXBuildFile; fileRef = 796DF51322E0EE7800140C02 /* gpt2-merges.txt */; };
 		796DF57822E1047B00140C02 /* gpt2-vocab.json in Resources */ = {isa = PBXBuildFile; fileRef = 796DF51422E0EE7800140C02 /* gpt2-vocab.json */; };
-		796DF57E22E1209B00140C02 /* encoded_tokens.json in Resources */ = {isa = PBXBuildFile; fileRef = 796DF57D22E1209B00140C02 /* encoded_tokens.json */; };
 		796DF57F22E1209B00140C02 /* encoded_tokens.json in Resources */ = {isa = PBXBuildFile; fileRef = 796DF57D22E1209B00140C02 /* encoded_tokens.json */; };
+		796DF58722E2727000140C02 /* GPT2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796DF58622E2727000140C02 /* GPT2.swift */; };
 		79F2CC5C22C50078009F8551 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC5B22C50078009F8551 /* AppDelegate.swift */; };
 		79F2CC5E22C50078009F8551 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC5D22C50078009F8551 /* SceneDelegate.swift */; };
 		79F2CC6022C50078009F8551 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC5F22C50078009F8551 /* ViewController.swift */; };
@@ -49,7 +50,6 @@
 		79F2CC8E22C55413009F8551 /* tokenized_questions.json in Resources */ = {isa = PBXBuildFile; fileRef = 79F2CC8D22C55413009F8551 /* tokenized_questions.json */; };
 		79F2CC8F22C55413009F8551 /* tokenized_questions.json in Resources */ = {isa = PBXBuildFile; fileRef = 79F2CC8D22C55413009F8551 /* tokenized_questions.json */; };
 		79F2CC9122C5590C009F8551 /* BERTSQUADFP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC9022C5590C009F8551 /* BERTSQUADFP16.mlmodel */; };
-		79F2CC9222C5590C009F8551 /* BERTSQUADFP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC9022C5590C009F8551 /* BERTSQUADFP16.mlmodel */; };
 		79F2CC9422C56693009F8551 /* BertForQuestionAnswering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC9322C56693009F8551 /* BertForQuestionAnswering.swift */; };
 		79F2CC9522C56693009F8551 /* BertForQuestionAnswering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC9322C56693009F8551 /* BertForQuestionAnswering.swift */; };
 		79F2CC9722C56891009F8551 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC9622C56890009F8551 /* Math.swift */; };
@@ -60,6 +60,9 @@
 		79F2CC9E22C57825009F8551 /* BertForQATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC9D22C57825009F8551 /* BertForQATests.swift */; };
 		79F2CCA022C666C7009F8551 /* question_tokens.json in Resources */ = {isa = PBXBuildFile; fileRef = 79F2CC9F22C666C7009F8551 /* question_tokens.json */; };
 		79F2CCA222C6717E009F8551 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CCA122C6717D009F8551 /* LoaderView.swift */; };
+		79F7060E22EA0CA900C4432C /* BERTSQUADFP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC9022C5590C009F8551 /* BERTSQUADFP16.mlmodel */; };
+		79F7061022EA472D00C4432C /* gpt2-256.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 79F7060F22EA472D00C4432C /* gpt2-256.mlmodel */; };
+		79F7061122EA472D00C4432C /* gpt2-256.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 79F7060F22EA472D00C4432C /* gpt2-256.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +83,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		791D169222EA4918004D7A79 /* MultiArrayUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiArrayUtilsTests.swift; sourceTree = "<group>"; };
 		7944CDBE22C501D6000C0B1E /* dev-v1.1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "dev-v1.1.json"; sourceTree = "<group>"; };
 		796DF50F22E0EB1D00140C02 /* GPT2Tokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPT2Tokenizer.swift; sourceTree = "<group>"; };
 		796DF51322E0EE7800140C02 /* gpt2-merges.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "gpt2-merges.txt"; sourceTree = "<group>"; };
@@ -97,6 +101,7 @@
 		796DF56622E1026800140C02 /* CoreMLGPT2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLGPT2Tests.swift; sourceTree = "<group>"; };
 		796DF56822E1026800140C02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		796DF57D22E1209B00140C02 /* encoded_tokens.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = encoded_tokens.json; sourceTree = "<group>"; };
+		796DF58622E2727000140C02 /* GPT2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPT2.swift; sourceTree = "<group>"; };
 		79F2CC5822C50078009F8551 /* CoreMLBert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreMLBert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79F2CC5B22C50078009F8551 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79F2CC5D22C50078009F8551 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +126,7 @@
 		79F2CC9D22C57825009F8551 /* BertForQATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BertForQATests.swift; sourceTree = "<group>"; };
 		79F2CC9F22C666C7009F8551 /* question_tokens.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = question_tokens.json; sourceTree = "<group>"; };
 		79F2CCA122C6717D009F8551 /* LoaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
+		79F7060F22EA472D00C4432C /* gpt2-256.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "gpt2-256.mlmodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +173,7 @@
 				796DF51322E0EE7800140C02 /* gpt2-merges.txt */,
 				796DF51422E0EE7800140C02 /* gpt2-vocab.json */,
 				796DF57D22E1209B00140C02 /* encoded_tokens.json */,
+				79F7060F22EA472D00C4432C /* gpt2-256.mlmodel */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -189,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				796DF56622E1026800140C02 /* CoreMLGPT2Tests.swift */,
+				791D169222EA4918004D7A79 /* MultiArrayUtilsTests.swift */,
 				796DF56822E1026800140C02 /* Info.plist */,
 			);
 			path = CoreMLGPT2Tests;
@@ -254,6 +262,7 @@
 				79F2CC9922C57132009F8551 /* MLMultiArray+Utils.swift */,
 				796DF50F22E0EB1D00140C02 /* GPT2Tokenizer.swift */,
 				796DF51922E0FF7A00140C02 /* GPT2ByteEncoder.swift */,
+				796DF58622E2727000140C02 /* GPT2.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -409,7 +418,6 @@
 				79F2CC8E22C55413009F8551 /* tokenized_questions.json in Resources */,
 				796DF51522E0EE7800140C02 /* gpt2-merges.txt in Resources */,
 				79F2CC6522C5007B009F8551 /* Assets.xcassets in Resources */,
-				796DF57E22E1209B00140C02 /* encoded_tokens.json in Resources */,
 				79F2CC6322C50078009F8551 /* Main.storyboard in Resources */,
 				7944CDBF22C501D6000C0B1E /* dev-v1.1.json in Resources */,
 				796DF51622E0EE7800140C02 /* gpt2-vocab.json in Resources */,
@@ -436,7 +444,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				796DF55422E1026700140C02 /* ViewController.swift in Sources */,
+				796DF58722E2727000140C02 /* GPT2.swift in Sources */,
 				796DF56F22E1039C00140C02 /* SquadDataset.swift in Sources */,
+				79F7061022EA472D00C4432C /* gpt2-256.mlmodel in Sources */,
 				796DF55022E1026700140C02 /* AppDelegate.swift in Sources */,
 				796DF57222E1039C00140C02 /* Utils.swift in Sources */,
 				796DF57422E1039C00140C02 /* MLMultiArray+Utils.swift in Sources */,
@@ -453,6 +463,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				796DF56722E1026800140C02 /* CoreMLGPT2Tests.swift in Sources */,
+				791D169322EA4918004D7A79 /* MultiArrayUtilsTests.swift in Sources */,
+				79F7061122EA472D00C4432C /* gpt2-256.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,8 +496,8 @@
 				79F2CC7322C5007B009F8551 /* BertTokenizerTests.swift in Sources */,
 				79F2CC9C22C57731009F8551 /* BertTokenizer.swift in Sources */,
 				79F2CC8C22C549C1009F8551 /* Utils.swift in Sources */,
-				79F2CC9222C5590C009F8551 /* BERTSQUADFP16.mlmodel in Sources */,
 				79F2CC9522C56693009F8551 /* BertForQuestionAnswering.swift in Sources */,
+				79F7060E22EA0CA900C4432C /* BERTSQUADFP16.mlmodel in Sources */,
 				79F2CC9B22C57132009F8551 /* MLMultiArray+Utils.swift in Sources */,
 				79F2CC9822C56891009F8551 /* Math.swift in Sources */,
 			);
