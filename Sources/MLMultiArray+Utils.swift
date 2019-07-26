@@ -121,11 +121,11 @@ extension MLMultiArray {
                 if j == sliceDim {
                     index.append(i)
                 } else {
-                    index.append(j)
+                    index.append(selectDims[j]!)
                 }
             }
             /// print("Accessing element \(index)")
-            dstPtr[i] = Double(truncating: o[index as [NSNumber]])
+            dstPtr[i] = o[index as [NSNumber]] as! Double
         }
         return arr
     }
