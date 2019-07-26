@@ -87,9 +87,9 @@ class GPT2 {
             newTokens.append(nextToken)
             print("🦄 <\(time)s>", i, nextToken, tokens.count)
             callback?(
-                tokenizer.decode(tokens: tokens)
+                tokenizer.decode(tokens: newTokens)
             )
         }
-        return tokenizer.decode(tokens: tokens)
+        return tokenizer.decode(tokens: newTokens)
     }
 }
