@@ -30,13 +30,7 @@ struct EncodingSample {
 
 class CoreMLGPT2Tests: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+    // MARK: - Tokenizer
 
     func testByteEncode() {
         let dataset = EncodingSample.dataset
@@ -79,6 +73,29 @@ class CoreMLGPT2Tests: XCTestCase {
             tokenizer.decode(tokens: dataset.token_ids),
             dataset.text
         )
-
+    }
+    
+    // MARK: - Model and Predictions
+    
+    func testPredictOneTokenFromShortSequence() {
+        let m = Utils.time(label: "Init") {
+            return GPT2(strategy: .greedy)
+        }
+        let tokens = m.tokenizer.encode(text: "My name is")
+        XCTAssertEqual(
+            tokens,
+            [3666, 1438, 318]
+        )
+        let nextToken = Utils.time(label: "Predict") {
+            return m.predict(tokens: tokens)
+        }
+        XCTAssertEqual(
+            nextToken,
+            1757
+        )
+        XCTAssertEqual(
+            m.tokenizer.decode(tokens: [nextToken]),
+            " John"
+        )
     }
 }
