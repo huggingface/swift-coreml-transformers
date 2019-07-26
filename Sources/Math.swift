@@ -55,7 +55,10 @@ struct Math {
         return Math.argmax(ptr, count: multiArray.count)
     }
     
-    /// Helper for top-k
+    /// Top-K.
+    /// Select the k most-probable elements indices from `arr`
+    /// and return both the indices (from the original array)
+    /// and their softmaxed probabilities.
     /// 
     static func topK(arr: [Double], k: Int) -> (indexes: [Int], probs: [Float]) {
         let x = Array(arr.enumerated().map { ($0, $1) }
