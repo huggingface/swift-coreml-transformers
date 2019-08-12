@@ -7,14 +7,14 @@ import numpy as np
 
 # get weights
 from pytorch_transformers import GPT2LMHeadModel
-model_name = "gpt2-medium"
+model_name = "gpt2"
 lm_head_model = GPT2LMHeadModel.from_pretrained(model_name)
 model = lm_head_model.transformer
 
 wte = model.wte.weight.data.numpy().transpose() # shape (768, 50257) /!\ i hate this
 wpe = model.wpe.weight.data.numpy().transpose() # shape (768, 1024)
 
-sequence_length = 512
+sequence_length = 64
 steps = 12
 
 # build model
@@ -409,7 +409,7 @@ builder.add_inner_product(
 # compile spec to model
 mlmodel = coremltools.models.MLModel(builder.spec)
 
-save_spec(builder.spec, f'../Resources/{model_name}-{sequence_length}.mlmodel')
+save_spec(builder.spec, f'../Resources/{model_name}-{sequence_length}-{steps}.mlmodel')
 # model = coremltools.models.MLModel('gpt2.mlmodel')
 
 input_ids = np.zeros(sequence_length)
