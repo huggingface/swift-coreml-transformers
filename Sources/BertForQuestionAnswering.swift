@@ -10,7 +10,7 @@ import Foundation
 import CoreML
 
 class BertForQuestionAnswering {
-    private let model = BERTSQUADFP16()
+    internal let model = BERTSQUADFP16()
     private let tokenizer = BertTokenizer()
     public let seqLen = 384
     
