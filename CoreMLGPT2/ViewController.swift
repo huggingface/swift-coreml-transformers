@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var shuffleBtn: UIButton!
     @IBOutlet weak var triggerBtn: UIButton!
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var speedLabel: UILabel!
     
     let model = GPT2(strategy: .topK(40))
     
@@ -45,7 +46,7 @@ class ViewController: UIViewController {
             return
         }
         DispatchQueue.global(qos: .userInitiated).async {
-            _ = self.model.generate(text: text, nTokens: 12) { completion in
+            _ = self.model.generate(text: text, nTokens: 12) { completion, time in
                 DispatchQueue.main.async {
                     let startingTxt = NSMutableAttributedString(string: text, attributes: [
                         NSAttributedString.Key.font: self.textView.font as Any,
@@ -56,6 +57,7 @@ class ViewController: UIViewController {
                     ])
                     startingTxt.append(completeTxt)
                     self.textView.attributedText = startingTxt
+                    self.speedLabel.text = String(format: "%.2f", 1 / time)
                 }
             }
         }
