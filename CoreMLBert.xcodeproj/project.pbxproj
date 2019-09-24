@@ -65,6 +65,8 @@
 		79F2CC9E22C57825009F8551 /* BertForQATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC9D22C57825009F8551 /* BertForQATests.swift */; };
 		79F2CCA022C666C7009F8551 /* question_tokens.json in Resources */ = {isa = PBXBuildFile; fileRef = 79F2CC9F22C666C7009F8551 /* question_tokens.json */; };
 		79F2CCA222C6717E009F8551 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CCA122C6717D009F8551 /* LoaderView.swift */; };
+		79F65D21233AC16A006BEDE9 /* distilbert-squad-128.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 79F65D20233AC16A006BEDE9 /* distilbert-squad-128.mlmodel */; };
+		79F65D22233AC16A006BEDE9 /* distilbert-squad-128.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 79F65D20233AC16A006BEDE9 /* distilbert-squad-128.mlmodel */; };
 		79F7060E22EA0CA900C4432C /* BERTSQUADFP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC9022C5590C009F8551 /* BERTSQUADFP16.mlmodel */; };
 /* End PBXBuildFile section */
 
@@ -133,6 +135,7 @@
 		79F2CC9D22C57825009F8551 /* BertForQATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BertForQATests.swift; sourceTree = "<group>"; };
 		79F2CC9F22C666C7009F8551 /* question_tokens.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = question_tokens.json; sourceTree = "<group>"; };
 		79F2CCA122C6717D009F8551 /* LoaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
+		79F65D20233AC16A006BEDE9 /* distilbert-squad-128.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "distilbert-squad-128.mlmodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +181,7 @@
 				79F2CC9F22C666C7009F8551 /* question_tokens.json */,
 				79F2CC9022C5590C009F8551 /* BERTSQUADFP16.mlmodel */,
 				79458103233086EB00024429 /* distilbert-64-12.mlmodel */,
+				79F65D20233AC16A006BEDE9 /* distilbert-squad-128.mlmodel */,
 				796DF51322E0EE7800140C02 /* gpt2-merges.txt */,
 				796DF51422E0EE7800140C02 /* gpt2-vocab.json */,
 				796DF57D22E1209B00140C02 /* encoded_tokens.json */,
@@ -487,6 +491,7 @@
 				79F2CC8122C5041C009F8551 /* SquadDataset.swift in Sources */,
 				796DF51A22E0FF7A00140C02 /* GPT2ByteEncoder.swift in Sources */,
 				79F2CC9722C56891009F8551 /* Math.swift in Sources */,
+				79F65D21233AC16A006BEDE9 /* distilbert-squad-128.mlmodel in Sources */,
 				79F2CC5C22C50078009F8551 /* AppDelegate.swift in Sources */,
 				79458104233086EB00024429 /* distilbert-64-12.mlmodel in Sources */,
 				796DF51022E0EB1D00140C02 /* GPT2Tokenizer.swift in Sources */,
@@ -508,6 +513,7 @@
 				79458105233086EB00024429 /* distilbert-64-12.mlmodel in Sources */,
 				79F2CC8C22C549C1009F8551 /* Utils.swift in Sources */,
 				79F2CC9522C56693009F8551 /* BertForQuestionAnswering.swift in Sources */,
+				79F65D22233AC16A006BEDE9 /* distilbert-squad-128.mlmodel in Sources */,
 				79E5A6A223303A6500EC42C5 /* DistilBERTPerfTests.swift in Sources */,
 				79F7060E22EA0CA900C4432C /* BERTSQUADFP16.mlmodel in Sources */,
 				79F2CC9B22C57132009F8551 /* MLMultiArray+Utils.swift in Sources */,

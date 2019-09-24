@@ -22,7 +22,10 @@ class BertForQuestionAnswering {
     func predict(question: String, context: String) -> (start: Int, end: Int, tokens: [String], answer: String) {
         let input = featurizeTokens(question: question, context: context)
         
-        let output = try! model.prediction(input: input)
+        let (output, time) = Utils.time {
+            return try! model.prediction(input: input)
+        }
+        print("🦄 <\(time)s>")
         let start = Math.argmax(output.start_logits).0
         let end = Math.argmax(output.end_logits).0
         

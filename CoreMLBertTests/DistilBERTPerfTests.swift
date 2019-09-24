@@ -16,6 +16,7 @@ class DistilBERTPerfTests: XCTestCase {
     let question = "Which NFL team represented the AFC at Super Bowl 50?"
     let m = BertForQuestionAnswering()
     let mDistilbert = distilbert_64_12()
+    let mDistilbert128 = distilbert_squad_128()
     
     func testPerformanceNakedBERTModel() {
         let input = m.featurizeTokens(question: question, context: context)
@@ -30,6 +31,15 @@ class DistilBERTPerfTests: XCTestCase {
         
         self.measure {
             _ = try! mDistilbert.prediction(input_ids: input_ids)
+            /// print(output.output_logits)
+        }
+    }
+    
+    func testPerformanceDistilbert128() {
+        let input_ids = MLMultiArray.from(Array(repeating: 0, count: 128), dims: 2)
+        
+        self.measure {
+            _ = try! mDistilbert128.prediction(input_ids: input_ids)
             /// print(output.output_logits)
         }
     }
