@@ -32,6 +32,7 @@ class ViewController: UIViewController {
         triggerBtn.addTarget(self, action: #selector(trigger), for: .touchUpInside)
         
         textView.flashScrollIndicators()
+        self.speedLabel.text = "0"
     }
     
     @objc func shuffle() {
@@ -46,7 +47,7 @@ class ViewController: UIViewController {
             return
         }
         DispatchQueue.global(qos: .userInitiated).async {
-            _ = self.model.generate(text: text, nTokens: 12) { completion, time in
+            _ = self.model.generate(text: text, nTokens: 50) { completion, time in
                 DispatchQueue.main.async {
                     let startingTxt = NSMutableAttributedString(string: text, attributes: [
                         NSAttributedString.Key.font: self.textView.font as Any,
