@@ -74,7 +74,7 @@ for i in range(steps):
 	print(i)
 	ln_weight = model.h[i].ln_1.weight.data.numpy().reshape((1, 1, 768, 1, 1))
 	ln_bias = model.h[i].ln_1.bias.data.numpy().reshape((1, 1, 768, 1, 1))
-	ln_epsilon = model.h[i].ln_1.variance_epsilon
+	ln_epsilon = model.h[i].ln_1.eps
 
 	builder.add_mvn(
 		name=f"{i}_block_ln_1",
@@ -287,7 +287,7 @@ for i in range(steps):
 
 	ln_2_weight = model.h[i].ln_2.weight.data.numpy().reshape((1, 1, 768, 1, 1))
 	ln_2_bias = model.h[i].ln_2.bias.data.numpy().reshape((1, 1, 768, 1, 1))
-	ln_2_epsilon = model.h[i].ln_2.variance_epsilon
+	ln_2_epsilon = model.h[i].ln_2.eps
 
 	# Input: (1, seq, 768, 1, 1), Output:
 	builder.add_mvn(
@@ -368,7 +368,7 @@ for i in range(steps):
 
 ln_f_weight = model.ln_f.weight.data.numpy().reshape((1, 1, 768, 1, 1))
 ln_f_bias = model.ln_f.bias.data.numpy().reshape((1, 1, 768, 1, 1))
-ln_f_epsilon = model.ln_f.variance_epsilon
+ln_f_epsilon = model.ln_f.eps
 
 # Input: (1, seq, 768, 1, 1), Output:
 builder.add_mvn(
@@ -409,21 +409,21 @@ builder.add_inner_product(
 # compile spec to model
 mlmodel = coremltools.models.MLModel(builder.spec)
 
-save_spec(builder.spec, f'../Resources/{model_name}-{sequence_length}-{steps}.mlmodel')
+save_spec(builder.spec, f'../Resources/{model_name}-{sequence_length}-{steps}-2.mlmodel')
 # model = coremltools.models.MLModel('gpt2.mlmodel')
 
-input_ids = np.zeros(sequence_length)
-position_ids = np.arange(sequence_length).astype(np.float)
+# input_ids = np.zeros(sequence_length)
+# position_ids = np.arange(sequence_length).astype(np.float)
 
-input_data = {
-	'input_ids': input_ids,
-	'position_ids': position_ids,
-}
+# input_data = {
+# 	'input_ids': input_ids,
+# 	'position_ids': position_ids,
+# }
 
 # predictions = mlmodel.predict(input_data)["output_logits"]
 # equal = np.amax(predictions - mlp_conv_proj.detach().numpy())
 
-print(predictions)
+# print(predictions)
 
 
 # save_spec(builder.spec, 'gpt2.mlmodel')
