@@ -204,7 +204,7 @@ for i in range(steps):
 		output_name=f"{i}_block_attn_afterbias",
 		# output_name=f"output_logits",
 		b=bias_constant_0,
-		shape_bias=[sequence_length, sequence_length],
+		shape_bias=[1, sequence_length, sequence_length],
 	)
 
 	builder.add_squeeze(
