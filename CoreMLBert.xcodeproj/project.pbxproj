@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4E10C49C22FB95800013FE11 /* gpt2-64-12.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4E10C49B22FB95800013FE11 /* gpt2-64-12.mlmodel */; };
 		791D169322EA4918004D7A79 /* MultiArrayUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791D169222EA4918004D7A79 /* MultiArrayUtilsTests.swift */; };
-		7934AF8822EA4CEC00396AD5 /* gpt2-512.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7934AF8722EA4CEC00396AD5 /* gpt2-512.mlmodel */; };
 		7944CDBF22C501D6000C0B1E /* dev-v1.1.json in Resources */ = {isa = PBXBuildFile; fileRef = 7944CDBE22C501D6000C0B1E /* dev-v1.1.json */; };
 		7944CDC022C501D6000C0B1E /* dev-v1.1.json in Resources */ = {isa = PBXBuildFile; fileRef = 7944CDBE22C501D6000C0B1E /* dev-v1.1.json */; };
 		79458104233086EB00024429 /* distilbert-64-12.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 79458103233086EB00024429 /* distilbert-64-12.mlmodel */; };
@@ -36,6 +34,8 @@
 		796DF57822E1047B00140C02 /* gpt2-vocab.json in Resources */ = {isa = PBXBuildFile; fileRef = 796DF51422E0EE7800140C02 /* gpt2-vocab.json */; };
 		796DF57F22E1209B00140C02 /* encoded_tokens.json in Resources */ = {isa = PBXBuildFile; fileRef = 796DF57D22E1209B00140C02 /* encoded_tokens.json */; };
 		796DF58722E2727000140C02 /* GPT2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796DF58622E2727000140C02 /* GPT2.swift */; };
+		799F42E2234CDF70006CDB03 /* distilgpt2-64-6.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 799F42E1234CDF70006CDB03 /* distilgpt2-64-6.mlmodel */; };
+		79D94AD6234CE4830033EA7D /* gpt2-64-12.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 79D94AD5234CE4830033EA7D /* gpt2-64-12.mlmodel */; };
 		79E5A6A223303A6500EC42C5 /* DistilBERTPerfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E5A6A123303A6500EC42C5 /* DistilBERTPerfTests.swift */; };
 		79F2CC5C22C50078009F8551 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC5B22C50078009F8551 /* AppDelegate.swift */; };
 		79F2CC5E22C50078009F8551 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC5D22C50078009F8551 /* SceneDelegate.swift */; };
@@ -88,9 +88,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4E10C49B22FB95800013FE11 /* gpt2-64-12.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "gpt2-64-12.mlmodel"; sourceTree = "<group>"; };
 		791D169222EA4918004D7A79 /* MultiArrayUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiArrayUtilsTests.swift; sourceTree = "<group>"; };
-		7934AF8722EA4CEC00396AD5 /* gpt2-512.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "gpt2-512.mlmodel"; sourceTree = "<group>"; };
 		7944CDBE22C501D6000C0B1E /* dev-v1.1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "dev-v1.1.json"; sourceTree = "<group>"; };
 		79458103233086EB00024429 /* distilbert-64-12.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "distilbert-64-12.mlmodel"; sourceTree = "<group>"; };
 		796DF50F22E0EB1D00140C02 /* GPT2Tokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPT2Tokenizer.swift; sourceTree = "<group>"; };
@@ -110,6 +108,8 @@
 		796DF56822E1026800140C02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		796DF57D22E1209B00140C02 /* encoded_tokens.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = encoded_tokens.json; sourceTree = "<group>"; };
 		796DF58622E2727000140C02 /* GPT2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPT2.swift; sourceTree = "<group>"; };
+		799F42E1234CDF70006CDB03 /* distilgpt2-64-6.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "distilgpt2-64-6.mlmodel"; sourceTree = "<group>"; };
+		79D94AD5234CE4830033EA7D /* gpt2-64-12.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "gpt2-64-12.mlmodel"; sourceTree = "<group>"; };
 		79E5A6A123303A6500EC42C5 /* DistilBERTPerfTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistilBERTPerfTests.swift; sourceTree = "<group>"; };
 		79F2CC5822C50078009F8551 /* CoreMLBert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreMLBert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79F2CC5B22C50078009F8551 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -173,7 +173,8 @@
 		7944CDBD22C501AF000C0B1E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4E10C49B22FB95800013FE11 /* gpt2-64-12.mlmodel */,
+				799F42E1234CDF70006CDB03 /* distilgpt2-64-6.mlmodel */,
+				79D94AD5234CE4830033EA7D /* gpt2-64-12.mlmodel */,
 				7944CDBE22C501D6000C0B1E /* dev-v1.1.json */,
 				79F2CC8422C50F87009F8551 /* vocab.txt */,
 				79F2CC8722C51E03009F8551 /* basic_tokenized_questions.json */,
@@ -185,7 +186,6 @@
 				796DF51322E0EE7800140C02 /* gpt2-merges.txt */,
 				796DF51422E0EE7800140C02 /* gpt2-vocab.json */,
 				796DF57D22E1209B00140C02 /* encoded_tokens.json */,
-				7934AF8722EA4CEC00396AD5 /* gpt2-512.mlmodel */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -458,17 +458,17 @@
 			files = (
 				796DF55422E1026700140C02 /* ViewController.swift in Sources */,
 				796DF58722E2727000140C02 /* GPT2.swift in Sources */,
-				7934AF8822EA4CEC00396AD5 /* gpt2-512.mlmodel in Sources */,
 				796DF56F22E1039C00140C02 /* SquadDataset.swift in Sources */,
 				796DF55022E1026700140C02 /* AppDelegate.swift in Sources */,
 				796DF57222E1039C00140C02 /* Utils.swift in Sources */,
+				79D94AD6234CE4830033EA7D /* gpt2-64-12.mlmodel in Sources */,
 				796DF57422E1039C00140C02 /* MLMultiArray+Utils.swift in Sources */,
 				796DF57022E1039C00140C02 /* BertTokenizer.swift in Sources */,
 				796DF57522E1039C00140C02 /* GPT2Tokenizer.swift in Sources */,
 				796DF55222E1026700140C02 /* SceneDelegate.swift in Sources */,
 				796DF57322E1039C00140C02 /* Math.swift in Sources */,
 				796DF57622E1039C00140C02 /* GPT2ByteEncoder.swift in Sources */,
-				4E10C49C22FB95800013FE11 /* gpt2-64-12.mlmodel in Sources */,
+				799F42E2234CDF70006CDB03 /* distilgpt2-64-6.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
