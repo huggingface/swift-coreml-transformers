@@ -11,19 +11,10 @@ import onnxruntime as rt
 import coremltools
 import torch
 import numpy as np
+from utils import _compute_SNR
 
 
-def _compute_SNR(x, y):
-    noise = x - y
-    noise_var = np.sum(noise ** 2) / len(noise) + 1e-7
-    signal_energy = np.sum(y ** 2) / len(y)
-    max_signal_energy = np.amax(y ** 2)
-    SNR = 10 * np.log10(signal_energy / noise_var)
-    PSNR = 10 * np.log10(max_signal_energy / noise_var)
-    return SNR, PSNR
-
-
-spec = coremltools.utils.load_spec("./distilbert-squad-128.mlmodel")
+spec = coremltools.utils.load_spec("../Resources/distilbert-squad-128.mlmodel")
 mlmodel = coremltools.models.MLModel(spec, useCPUOnly=True)
 
 input = np.random.randint(0, high=1000, size=(1, 128))
@@ -31,7 +22,7 @@ input_dict = {"input_ids": input.astype(np.float32)}
 
 pred_coreml = mlmodel.predict(input_dict, useCPUOnly=True)
 
-model = torch.load("distilbert.pt")
+model = torch.load("./distilbert.pt")
 pred_pt = model(torch.from_numpy(input).type(torch.LongTensor))
 
 pt_out = {}

@@ -2,13 +2,13 @@ import timeit
 
 import torch
 
-from pytorch_transformers.modeling_bert import BertForMaskedLM, BertModel
-from pytorch_transformers.modeling_distilbert import (
+from transformers.modeling_bert import BertForMaskedLM, BertModel
+from transformers.modeling_distilbert import (
     DistilBertModel,
     DistilBertForQuestionAnswering,
 )
-from pytorch_transformers.tokenization_bert import BertTokenizer
-from pytorch_transformers.tokenization_distilbert import DistilBertTokenizer
+from transformers.tokenization_bert import BertTokenizer
+from transformers.tokenization_distilbert import DistilBertTokenizer
 
 
 tokenizer = DistilBertTokenizer.from_pretrained(

@@ -1,4 +1,6 @@
 """
+PyTorch -> onnx -> coreml conversion
+
 Credits: 
 
 Bhushan Sonawane https://github.com/bhushan23 Apple, Inc.
@@ -6,21 +8,27 @@ Bhushan Sonawane https://github.com/bhushan23 Apple, Inc.
 https://github.com/onnx/onnx-coreml/issues/478
 
 """
-from pytorch_transformers.modeling_distilbert import DistilBertForQuestionAnswering
-from onnx_coreml import convert
-import torch
+import os
+import timeit
 import numpy as np
+import torch
+from onnx_coreml import convert
+from transformers.modeling_distilbert import DistilBertForQuestionAnswering
+from transformers.tokenization_distilbert import DistilBertTokenizer
+from utils import _compute_SNR
 
-model = DistilBertForQuestionAnswering.from_pretrained(
-    "distilbert-base-uncased-distilled-squad", torchscript=True
-)
-torch.save(model, './distilbert.pt')
+SEQUENCE_LENGTH = 384
+MODEL_NAME = "distilbert-base-uncased-distilled-squad"
+
+
+model = DistilBertForQuestionAnswering.from_pretrained(MODEL_NAME, torchscript=True)
+# torch.save(model, "./distilbert.pt")
 model.eval()
 
 torch.onnx.export(
     model,
-    torch.ones(1, 128, dtype=torch.long),
-    "distilbert-squad-128.onnx",
+    torch.ones(1, SEQUENCE_LENGTH, dtype=torch.long),
+    f"./distilbert-squad-{SEQUENCE_LENGTH}.onnx",
     verbose=True,
     input_names=["input_ids"],
     output_names=["start_scores", "end_scores"],
@@ -50,8 +58,67 @@ def _convert_softmax(builder, node, graph, err):
 
 
 mlmodel = convert(
-    model="./distilbert-squad-128.onnx",
+    model=f"./distilbert-squad-{SEQUENCE_LENGTH}.onnx",
     target_ios="13",
     custom_conversion_functions={"Softmax": _convert_softmax},
 )
-mlmodel.save("./distilbert-squad-128.mlmodel")
+mlmodel.save(f"../Resources/distilbert-squad-{SEQUENCE_LENGTH}.mlmodel")
+os.remove(f"./distilbert-squad-{SEQUENCE_LENGTH}.onnx")
+
+##### Now check the outputs.
+print("––––––\n")
+
+tokenizer = DistilBertTokenizer.from_pretrained(
+    "distilbert-base-uncased-distilled-squad"
+)
+
+
+def generate_input_ids() -> np.array:
+    """
+    Returns:
+        np.array of shape (1, seq_len)
+    """
+    x = tokenizer.encode(
+        "Here is some text to encode, Here is some text to encode, Here is some text to encode",
+        add_special_tokens=True,
+    )
+    x += (SEQUENCE_LENGTH - len(x)) * [tokenizer.pad_token_id]
+    return np.array([x], dtype=np.long)
+
+
+input_ids = generate_input_ids()
+outputs_pt = model(torch.tensor(input_ids))
+outputs_pt = (outputs_pt[0].detach().numpy(), outputs_pt[1].detach().numpy())
+
+pred_coreml = mlmodel.predict(
+    {"input_ids": input_ids.astype(np.float32)}, useCPUOnly=True
+)
+
+snr = _compute_SNR(pred_coreml["start_scores"], outputs_pt[0])
+print(f"Start Scores: SNR, PSNR {snr}")
+snr = _compute_SNR(pred_coreml["end_scores"], outputs_pt[1])
+print(f"End Scores: SNR, PSNR {snr}")
+
+
+##### Perf benchmark.
+print("––––––\n")
+
+
+def timeit_and_report_mean(f) -> str:
+    samples = timeit.repeat(f, number=1)
+    print(samples)
+    report = f"{np.mean(samples)} s ± {np.std(samples)} s per execution"
+    return report
+
+
+print("PyTorch", timeit_and_report_mean(lambda: model(torch.tensor(input_ids))))
+# Here we could also benchmark torchscript-traced version of `model`
+print(
+    "CoreML",
+    timeit_and_report_mean(
+        lambda: mlmodel.predict(
+            {"input_ids": input_ids.astype(np.float32)}, useCPUOnly=True
+        )
+    ),
+)
+
