@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var answerLabel: UILabel!
     let loaderView = LoaderView()
     
-    let m = BertForQuestionAnswering()
+    let m = BertForQuestionAnswering(.distilled)
     
     override func viewDidLoad() {
         super.viewDidLoad()

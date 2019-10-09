@@ -1,12 +1,15 @@
+"""
+Recreate the Core ML model from scratch using
+coremltools' neural_network.NeuralNetworkBuilder
+"""
 import coremltools
 import coremltools.models.datatypes as datatypes
 from coremltools.models import neural_network as neural_network
 from coremltools.models.utils import save_spec
 import numpy as np
-# from test import *
 
 # get weights
-from pytorch_transformers import GPT2LMHeadModel
+from transformers import GPT2LMHeadModel
 model_name = "gpt2"
 lm_head_model = GPT2LMHeadModel.from_pretrained(model_name)
 model = lm_head_model.transformer
