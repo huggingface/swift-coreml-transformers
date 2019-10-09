@@ -55,6 +55,18 @@ struct Math {
         return Math.argmax(ptr, count: multiArray.count)
     }
     
+    /// MLMultiArray helper.
+    /// Works in our specific use case.
+    static func argmax32(_ multiArray: MLMultiArray) -> (Int, Float) {
+        assert(multiArray.dataType == .float32)
+        let ptr = UnsafeMutablePointer<Float32>(OpaquePointer(multiArray.dataPointer))
+        let count = multiArray.count
+        var maxValue: Float = 0
+        var maxIndex: vDSP_Length = 0
+        vDSP_maxvi(ptr, vDSP_Stride(1), &maxValue, &maxIndex, vDSP_Length(count))
+        return (Int(maxIndex), maxValue)
+    }
+    
     /// Top-K.
     /// Select the k most-probable elements indices from `arr`
     /// and return both the indices (from the original array)

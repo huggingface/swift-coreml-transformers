@@ -10,9 +10,21 @@ import Foundation
 import CoreML
 
 class BertForQuestionAnswering {
-    internal let model = BERTSQUADFP16()
+    
+    enum Model {
+        case full(BERTSQUADFP16)
+        case distilled(distilbert_squad_384)
+    }
+    
+    let model: Model
+    
     private let tokenizer = BertTokenizer()
     public let seqLen = 384
+    
+    /// Initializer supporting both types of model.
+    init(model: Model) {
+        self.model = model
+    }
     
     
     /// Main prediction loop:
@@ -20,25 +32,45 @@ class BertForQuestionAnswering {
     /// - model inference
     /// - argmax and re-tokenization
     func predict(question: String, context: String) -> (start: Int, end: Int, tokens: [String], answer: String) {
-        let input = featurizeTokens(question: question, context: context)
-        
-        let (output, time) = Utils.time {
-            return try! model.prediction(input: input)
+        switch model {
+        case .full(let m):
+            let input = featurizeTokens(question: question, context: context)
+            
+            let (output, time) = Utils.time {
+                return try! m.prediction(input: input)
+            }
+            print("🦄 <\(time)s>")
+            let start = Math.argmax(output.start_logits).0
+            let end = Math.argmax(output.end_logits).0
+            
+            let tokenIds = Array(
+                MLMultiArray.toIntArray(input.word_id)[start...end]
+            )
+            let tokens = tokenizer.unTokenize(tokens: tokenIds)
+            let answer = tokenizer.convertWordpieceToBasicTokenList(tokens)
+            return (start: start, end: end, tokens: tokens, answer: answer)
+
+        case .distilled(let m):
+            let input = featurizeTokensDistilled(question: question, context: context)
+            
+            let (output, time) = Utils.time {
+                return try! m.prediction(input: input)
+            }
+            print("🦄 <\(time)s>")
+            let start = Math.argmax32(output.start_scores).0
+            let end = Math.argmax32(output.end_scores).0
+            
+            let tokenIds = Array(
+                MLMultiArray.toIntArray(input.input_ids)[start...end]
+            )
+            let tokens = tokenizer.unTokenize(tokens: tokenIds)
+            let answer = tokenizer.convertWordpieceToBasicTokenList(tokens)
+            return (start: start, end: end, tokens: tokens, answer: answer)
         }
-        print("🦄 <\(time)s>")
-        let start = Math.argmax(output.start_logits).0
-        let end = Math.argmax(output.end_logits).0
-        
-        let tokenIds = Array(
-            MLMultiArray.toIntArray(input.word_id)[start...end]
-        )
-        let tokens = tokenizer.unTokenize(tokens: tokenIds)
-        let answer = tokenizer.convertWordpieceToBasicTokenList(tokens)
-        return (start: start, end: end, tokens: tokens, answer: answer)
     }
     
     
-    func featurizeTokens(question: String, context: String) -> BERTSQUADFP16Input {
+    private func featurizeCommon(question: String, context: String) -> ([Int], [Int], MLMultiArray) {
         let tokensQuestion = tokenizer.tokenizeToIds(text: question)
         var tokensContext = tokenizer.tokenizeToIds(text: context)
         if tokensQuestion.count + tokensContext.count + 3 > seqLen {
@@ -66,7 +98,14 @@ class BertForQuestionAnswering {
             tokenizer.tokenToId(token: "[SEP]")
         )
         allTokens.append(contentsOf: Array(repeating: 0, count: nPadding))
-        let word_id = MLMultiArray.from(allTokens, dims: 2)
+        let input_ids = MLMultiArray.from(allTokens, dims: 2)
+        
+        return (tokensQuestion, tokensContext, input_ids)
+    }
+    
+    
+    func featurizeTokens(question: String, context: String) -> BERTSQUADFP16Input {
+        let (tokensQuestion, tokensContext, input_ids) = featurizeCommon(question: question, context: context)
         
         /// Sequence of token-types. Values of 0 for the start token, question tokens and the question separator. Value 1 for the document tokens and the end separator. The sequence is padded with 0 values to length 384.
         var tokenTypes = Array(repeating: 0, count: seqLen)
@@ -90,6 +129,12 @@ class BertForQuestionAnswering {
             }
         }
         
-        return BERTSQUADFP16Input(word_id: word_id, word_type: word_type, position: position, attention_mask: attention_mask)
+        return BERTSQUADFP16Input(word_id: input_ids, word_type: word_type, position: position, attention_mask: attention_mask)
+    }
+    
+    
+    func featurizeTokensDistilled(question: String, context: String) -> distilbert_squad_384Input {
+        let (_, _, input_ids) = featurizeCommon(question: question, context: context)
+        return distilbert_squad_384Input(input_ids: input_ids)
     }
 }
