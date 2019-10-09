@@ -11,19 +11,27 @@ import CoreML
 
 class BertForQuestionAnswering {
     
+    enum ModelShort {
+        case full
+        case distilled
+    }
+    
     enum Model {
         case full(BERTSQUADFP16)
         case distilled(distilbert_squad_384)
     }
-    
     let model: Model
     
     private let tokenizer = BertTokenizer()
     public let seqLen = 384
     
     /// Initializer supporting both types of model.
-    init(model: Model) {
-        self.model = model
+    init(_ short: ModelShort) {
+        if short == .full {
+            self.model = .full(BERTSQUADFP16())
+        } else {
+            self.model = .distilled(distilbert_squad_384())
+        }
     }
     
     
