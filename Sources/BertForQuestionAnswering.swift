@@ -18,7 +18,7 @@ class BertForQuestionAnswering {
     
     enum Model {
         case full(BERTSQUADFP16)
-        case distilled(distilbert_squad_384)
+        case distilled(distilbert_squad_384_FP16)
     }
     let model: Model
     
@@ -30,7 +30,7 @@ class BertForQuestionAnswering {
         if short == .full {
             self.model = .full(BERTSQUADFP16())
         } else {
-            self.model = .distilled(distilbert_squad_384())
+            self.model = .distilled(distilbert_squad_384_FP16())
         }
     }
     
@@ -141,8 +141,8 @@ class BertForQuestionAnswering {
     }
     
     
-    func featurizeTokensDistilled(question: String, context: String) -> distilbert_squad_384Input {
+    func featurizeTokensDistilled(question: String, context: String) -> distilbert_squad_384_FP16Input {
         let (_, _, input_ids) = featurizeCommon(question: question, context: context)
-        return distilbert_squad_384Input(input_ids: input_ids)
+        return distilbert_squad_384_FP16Input(input_ids: input_ids)
     }
 }

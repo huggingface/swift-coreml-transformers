@@ -75,7 +75,8 @@ class BertForQATests: XCTestCase {
     
     func testPerformanceNaked() {
         /// Only the model's forward pass
-        // average: 1.104 second in Simulator
+        // average: 1.104 s in Simulator
+        // average: 0.472 s on device
         let input = m.featurizeTokens(question: question, context: context)
         
         guard case .full(let model) = m.model else {

@@ -35,6 +35,8 @@
 		79908C14234E95FB00D0FE5B /* distilbert-squad-384.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 79908C13234E95FB00D0FE5B /* distilbert-squad-384.mlmodel */; };
 		79908C15234E960000D0FE5B /* distilbert-squad-384.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 79908C13234E95FB00D0FE5B /* distilbert-squad-384.mlmodel */; };
 		79908C17234E99B100D0FE5B /* DistilbertForQATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79908C16234E99B100D0FE5B /* DistilbertForQATests.swift */; };
+		79908C19234EAB5400D0FE5B /* distilbert-squad-384_FP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 79908C18234EAB5300D0FE5B /* distilbert-squad-384_FP16.mlmodel */; };
+		79908C1A234EAB5400D0FE5B /* distilbert-squad-384_FP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 79908C18234EAB5300D0FE5B /* distilbert-squad-384_FP16.mlmodel */; };
 		799F42E2234CDF70006CDB03 /* distilgpt2-64-6.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 799F42E1234CDF70006CDB03 /* distilgpt2-64-6.mlmodel */; };
 		79D94AD6234CE4830033EA7D /* gpt2-64-12.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 79D94AD5234CE4830033EA7D /* gpt2-64-12.mlmodel */; };
 		79F2CC5C22C50078009F8551 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2CC5B22C50078009F8551 /* AppDelegate.swift */; };
@@ -107,6 +109,7 @@
 		796DF58622E2727000140C02 /* GPT2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPT2.swift; sourceTree = "<group>"; };
 		79908C13234E95FB00D0FE5B /* distilbert-squad-384.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "distilbert-squad-384.mlmodel"; sourceTree = "<group>"; };
 		79908C16234E99B100D0FE5B /* DistilbertForQATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistilbertForQATests.swift; sourceTree = "<group>"; };
+		79908C18234EAB5300D0FE5B /* distilbert-squad-384_FP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "distilbert-squad-384_FP16.mlmodel"; sourceTree = "<group>"; };
 		799F42E1234CDF70006CDB03 /* distilgpt2-64-6.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "distilgpt2-64-6.mlmodel"; sourceTree = "<group>"; };
 		79D94AD5234CE4830033EA7D /* gpt2-64-12.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "gpt2-64-12.mlmodel"; sourceTree = "<group>"; };
 		79F2CC5822C50078009F8551 /* CoreMLBert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreMLBert.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -179,6 +182,7 @@
 				79F2CC9F22C666C7009F8551 /* question_tokens.json */,
 				79F2CC9022C5590C009F8551 /* BERTSQUADFP16.mlmodel */,
 				79908C13234E95FB00D0FE5B /* distilbert-squad-384.mlmodel */,
+				79908C18234EAB5300D0FE5B /* distilbert-squad-384_FP16.mlmodel */,
 				796DF51322E0EE7800140C02 /* gpt2-merges.txt */,
 				796DF51422E0EE7800140C02 /* gpt2-vocab.json */,
 				796DF57D22E1209B00140C02 /* encoded_tokens.json */,
@@ -491,6 +495,7 @@
 				79F2CC5C22C50078009F8551 /* AppDelegate.swift in Sources */,
 				796DF51022E0EB1D00140C02 /* GPT2Tokenizer.swift in Sources */,
 				79F2CC9422C56693009F8551 /* BertForQuestionAnswering.swift in Sources */,
+				79908C19234EAB5400D0FE5B /* distilbert-squad-384_FP16.mlmodel in Sources */,
 				79F2CC9122C5590C009F8551 /* BERTSQUADFP16.mlmodel in Sources */,
 				79F2CC8322C50E00009F8551 /* BertTokenizer.swift in Sources */,
 				79F2CC5E22C50078009F8551 /* SceneDelegate.swift in Sources */,
@@ -507,6 +512,7 @@
 				79F2CC9C22C57731009F8551 /* BertTokenizer.swift in Sources */,
 				79F2CC8C22C549C1009F8551 /* Utils.swift in Sources */,
 				79F2CC9522C56693009F8551 /* BertForQuestionAnswering.swift in Sources */,
+				79908C1A234EAB5400D0FE5B /* distilbert-squad-384_FP16.mlmodel in Sources */,
 				79908C17234E99B100D0FE5B /* DistilbertForQATests.swift in Sources */,
 				79F7060E22EA0CA900C4432C /* BERTSQUADFP16.mlmodel in Sources */,
 				79908C15234E960000D0FE5B /* distilbert-squad-384.mlmodel in Sources */,

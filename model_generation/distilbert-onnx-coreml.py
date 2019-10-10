@@ -12,6 +12,7 @@ import os
 import timeit
 import numpy as np
 import torch
+import coremltools
 from onnx_coreml import convert
 from transformers.modeling_distilbert import DistilBertForQuestionAnswering
 from transformers.tokenization_distilbert import DistilBertTokenizer
@@ -64,6 +65,17 @@ mlmodel = convert(
 )
 mlmodel.save(f"../Resources/distilbert-squad-{SEQUENCE_LENGTH}.mlmodel")
 os.remove(f"./distilbert-squad-{SEQUENCE_LENGTH}.onnx")
+
+# fp16
+try:
+    model_fp16_spec = coremltools.utils.convert_neural_network_spec_weights_to_fp16(
+        mlmodel.get_spec()
+    )
+    coremltools.utils.save_spec(
+        model_fp16_spec, f"../Resources/distilbert-squad-{SEQUENCE_LENGTH}_FP16.mlmodel"
+    )
+except Exception as e:
+    print(e)
 
 ##### Now check the outputs.
 print("––––––\n")

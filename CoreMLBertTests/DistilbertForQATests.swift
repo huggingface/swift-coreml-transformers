@@ -41,7 +41,8 @@ class DistilbertForQATests: XCTestCase {
     
     func testPerformanceNaked() {
         /// Only the model's forward pass
-        // average: 0.878 sec in Simulator
+        // average: 0.878 s in Simulator
+        // average: 0.311 s on device
         let input = m.featurizeTokensDistilled(question: question, context: context)
         
         guard case .distilled(let model) = m.model else {
