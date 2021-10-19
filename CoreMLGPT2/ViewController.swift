@@ -50,11 +50,13 @@ class ViewController: UIViewController {
             _ = self.model.generate(text: text, nTokens: 50) { completion, time in
                 DispatchQueue.main.async {
                     let startingTxt = NSMutableAttributedString(string: text, attributes: [
-                        NSAttributedString.Key.font: self.textView.font as Any,
+                        .font: self.textView.font as Any,
+                        .foregroundColor: self.textView.textColor as Any,
                     ])
                     let completeTxt = NSAttributedString(string: completion, attributes: [
-                        NSAttributedString.Key.font: self.textView.font as Any,
-                        NSAttributedString.Key.backgroundColor: #colorLiteral(red: 0.8257101774, green: 0.8819463849, blue: 0.9195404649, alpha: 1),
+                        .font: self.textView.font as Any,
+                        .foregroundColor: self.textView.textColor as Any,
+                        .backgroundColor: UIColor.lightGray.withAlphaComponent(0.5),
                     ])
                     startingTxt.append(completeTxt)
                     self.textView.attributedText = startingTxt
