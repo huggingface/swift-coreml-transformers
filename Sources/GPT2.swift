@@ -21,9 +21,9 @@ class GPT2 {
         case topP(Double)
     }
     
-    private let model = distilgpt2_64_6()
+    private let model = gpt2_512()
     public let tokenizer = GPT2Tokenizer()
-    public let seqLen = 64
+    public let seqLen = 512
     private let strategy: DecodingStrategy
     
     init(strategy: DecodingStrategy = .greedy) {
