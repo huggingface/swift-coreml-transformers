@@ -1,3 +1,5 @@
+# This repo is not actively maintained and has been archived. For an in-development replacement, please head over to [swift-transformers](https://github.com/huggingface/swift-transformers)!
+
 
 # Swift Core ML implementations of Transformers: GPT-2, DistilGPT-2, BERT, DistilBERT, more coming soon!
 
